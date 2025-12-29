@@ -51,7 +51,6 @@ const Experience = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="snap-section">
       <section id="experience" className="py-16 md:py-24 px-6" ref={containerRef}>
         <div className="max-w-5xl mx-auto" ref={ref}>
           <motion.h2
@@ -207,7 +206,6 @@ const Experience = () => {
           </div>
         </div>
       </section>
-    </div>
   );
 };
 

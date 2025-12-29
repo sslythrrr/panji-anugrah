@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     title: "Smart Gallery",
     period: "Mar 2025 - Jul 2025",
-    categories: ["Mobile", "Data Science", "Machine Learning"],
+    categories: ["Mobile", "Machine Learning"],
     description:
       "Android gallery app with advanced NLP search and computer vision capabilities for intelligent photo management.",
     highlights: [
@@ -17,7 +17,7 @@ const projects = [
       "Integrated MobileNetV3 for multi-label classification and ML Kit for OCR-based retrieval",
       "Architected system to run quantized models locally using TensorFlow Lite",
     ],
-    tags: ["Kotlin", "Android", "NLP", "IndoBERT", "MobileNetV3", "TFLite", "Jetpack Compose"],
+    tags: ["Kotlin", "Android", "NLP", "IndoBERT", "MobileNetV3", "Computer Vision", "TFLite", "Jetpack Compose"],
     github: "https://github.com/sslythrrr/smart-gallery",
     images: [
       "/project/smart-gallery/1.webp",
@@ -237,7 +237,6 @@ const Projects = () => {
 
   return (
     <>
-      <div className="snap-section">
         <section id="projects" className="py-16 md:py-24 px-6 overflow-hidden" ref={ref}>
           <div className="max-w-7xl mx-auto">
             <motion.h2
@@ -426,7 +425,6 @@ const Projects = () => {
             </motion.div>
           </div>
         </section>
-      </div>
       {/* Project Modal */}
       <ProjectModal
         project={selectedProject}

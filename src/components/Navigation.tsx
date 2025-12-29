@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
+  { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
@@ -13,13 +14,16 @@ interface NavigationProps {
   onNameClick?: () => void;
   nameClickCount?: number;
   onScrollPastHero?: (isPastHero: boolean) => void;
+  hoveredNav: 'top' | 'side' | null;
+  onHoverChange: (nav: 'top' | 'side' | null) => void;
 }
 
-const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero }: NavigationProps) => {
+const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hoveredNav, onHoverChange }: NavigationProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isPastHero, setIsPastHero] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isHoveredFromBelow, setIsHoveredFromBelow] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,31 +63,45 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero }: Navig
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (href === "#hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const isNotInHeroSection = window.scrollY > window.innerHeight - 100;
+      if (!isNotInHeroSection) return;
 
-  // Theme colors based on click count
-  const getAccentClass = () => {
-    const themes = [
-      "",
-      "text-blue-300",       // Soft navy/blue - kalem & cool
-      "text-zinc-300",        // Soft maroon/red - warm & subtle
-      "text-orange-300",     // Soft orange - friendly & calm
-      ""
-    ];
-    return themes[nameClickCount % 4];
-  };
+      const isNearTopEdge = e.clientY < 100;
+
+      if (isNearTopEdge) {
+        onHoverChange('top');
+      } else if (hoveredNav === 'top') {
+        onHoverChange(null);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [hoveredNav, onHoverChange]);
 
   return (
     <>
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hoveredNav === 'top' && !isVisible
+          ? 'bg-background/60 backdrop-blur-lg'
+          : 'bg-transparent'
+          } ${hoveredNav === 'side' && isVisible ? 'pointer-events-none' : ''}`}
         initial={{ y: 0 }}
-        animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        animate={{
+          y: ((isVisible && hoveredNav !== 'side') || hoveredNav === 'top') ? 0 : -100, opacity: hoveredNav === 'side' && isVisible ? 0 : 1
+        }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-end h-16 md:h-20">
@@ -105,7 +123,8 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero }: Navig
                 <button
                   key={item.label}
                   onClick={() => handleNavClick(item.href)}
-                  className={`relative text-sm font-medium transition-colors duration-300 hoverable ${activeSection === item.href.slice(1)
+                  className={`relative text-sm font-medium transition-colors duration-300 hoverable ${(activeSection === item.href.slice(1)) ||
+                    (item.href === "#hero" && activeSection === "")
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                     }`}
@@ -157,7 +176,11 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero }: Navig
                   <motion.button
                     key={item.label}
                     onClick={() => handleNavClick(item.href)}
-                    className="text-left text-2xl font-display font-semibold py-3 text-foreground hover:text-accent transition-colors hoverable"
+                    className={`text-left text-2xl font-display font-semibold py-3 transition-colors hoverable ${(activeSection === item.href.slice(1)) ||
+                        (item.href === "#hero" && activeSection === "")
+                        ? "text-foreground"
+                        : "text-foreground hover:text-accent"
+                      }`}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}

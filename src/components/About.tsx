@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion"; // experimental
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import type { Variants } from "framer-motion";
@@ -40,12 +40,16 @@ const About = () => {
     },
   };
 
+  const profileInfo = {
+    age: 22,
+    location: "West Java, Indonesia",
+    imageUrl: "/icon.png"
+  };
 
   return (
-    <div className="snap-section">
       <section id="about" className="py-16 md:py-24 px-6" ref={containerRef}>
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
           ref={ref}
           style={{ y, opacity }}
         >
@@ -62,20 +66,73 @@ const About = () => {
               About
             </motion.h2>
 
-            {/* Bio */}
+            {/* Bio with Profile */}
             <motion.div
-              className="space-y-6 text-lg text-foreground/80 leading-relaxed mb-16"
+              className="flex flex-col md:flex-row gap-8 md:gap-12 mb-16"
               variants={itemVariants}
             >
-              <motion.p variants={itemVariants}>
-                I work on systems meant to be used, from NLP-based mobile applications to data pipelines that handle large-scale records. I care about correctness, maintainability, and whether the solution actually holds up in real conditions.
-              </motion.p>
-              <motion.p variants={itemVariants}>
-                I’m a CS graduate (GPA 3.89) with experience in mobile development, QA automation, and data-driven engineering. My work includes AI-powered Android apps, data analysis, and improving reliability through structured testing.
-              </motion.p>
-              <motion.p className="text-foreground/60" variants={itemVariants}>
-                I value clear code, practical tools, and steady improvement. I learn continuously because the work demands it, not because it sounds good.
-              </motion.p>
+              {/* Profile Photo */}
+              <motion.div
+                className="flex-shrink-0"
+                variants={itemVariants}
+              >
+                <motion.div
+                  className="relative w-48 md:w-56 mx-auto md:mx-0"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative rounded-lg overflow-hidden shadow-2xl">
+                    <img
+                      src={profileInfo.imageUrl}
+                      alt="Panji Anugrah"
+                      className="w-full h-auto object-cover"
+                    />
+                    {/* Subtle glow overlay on hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"
+                    />
+                  </div>
+
+                  {/* Info Badge */}
+                  <motion.div
+                    className="mt-4 text-center space-y-1"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
+                    {/* Mobile: inline with dot separator */}
+                    <p className="text-sm font-medium text-foreground/60 tracking-wide md:hidden">
+                      {profileInfo.age} · {profileInfo.location}
+                    </p>
+
+                    {/* Desktop: stacked */}
+                    <div className="hidden md:block space-y-0.5">
+                      <p className="text-sm font-medium text-foreground/60 tracking-wide">
+                        {profileInfo.age}
+                      </p>
+                      <p className="text-sm font-medium text-foreground/60 tracking-wide">
+                        {profileInfo.location}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
+              {/* Bio Text */}
+              <motion.div
+                className="flex-1 space-y-6 text-base md:text-[17px] text-foreground/80 leading-relaxed"
+                variants={itemVariants}
+              >
+                <motion.p variants={itemVariants}>
+                  I work on systems meant to be used, from NLP-based mobile applications to data pipelines that handle large-scale records. I care about correctness, maintainability, and whether the solution actually holds up in real conditions.
+                </motion.p>
+                <motion.p variants={itemVariants}>
+                  I'm a CS graduate (GPA 3.89) with experience in mobile development, QA automation, and data-driven engineering. My work includes AI-powered Android apps, data analysis, and improving reliability through structured testing.
+                </motion.p>
+                <motion.p variants={itemVariants}>
+                  I value clear code, practical tools, and steady improvement. I learn continuously because the work demands it, not because it sounds good.
+                </motion.p>
+              </motion.div>
             </motion.div>
 
             {/* Weapon of Choice */}
@@ -88,7 +145,6 @@ const About = () => {
           </motion.div>
         </motion.div>
       </section>
-    </div>
   );
 };
 

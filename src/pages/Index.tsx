@@ -22,6 +22,7 @@ const Index = () => {
   const [nameClickCount, setNameClickCount] = useState(0);
   const [isPastHero, setIsPastHero] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [hoveredNav, setHoveredNav] = useState<'top' | 'side' | null>(null);
 
   // Loading screen
   useEffect(() => {
@@ -134,14 +135,21 @@ const Index = () => {
         isOpen={isCommandPaletteOpen}
         onClose={() => setIsCommandPaletteOpen(false)}
       />
-      {/* Header Navigation (visible in hero) */}
+      {/* Header Navigation */}
       <Navigation
         onNameClick={handleNameClick}
         nameClickCount={nameClickCount}
         onScrollPastHero={handleScrollPastHero}
+        hoveredNav={hoveredNav}
+        onHoverChange={setHoveredNav}
       />
-      {/* Side Navigation (visible after hero) */}
-      <SideNavigation isVisible={isPastHero} activeSection={activeSection} />
+      {/* Side Navigation */}
+      <SideNavigation
+        isVisible={isPastHero}
+        activeSection={activeSection}
+        hoveredNav={hoveredNav}
+        onHoverChange={setHoveredNav}
+      />
       {/* Main Content */}
       <main>
         <Hero />

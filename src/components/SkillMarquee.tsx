@@ -1,4 +1,4 @@
-import { 
+import {
   SiKotlin,
   SiFlutter,
   SiDart,
@@ -14,15 +14,16 @@ import {
   SiTensorflow,
   SiAndroidstudio,
 } from "react-icons/si";
-import { 
-  LineChart, 
-  Workflow, 
-  TestTube2, 
-  Code2, 
-  BarChart3, 
+import {
+  LineChart,
+  Workflow,
+  TestTube2,
+  Code2,
+  BarChart3,
   PieChart,
   Settings
 } from "lucide-react";
+import { useRef, useState } from "react";
 
 const skills = [
   { name: "Kotlin", icon: SiKotlin },
@@ -49,15 +50,56 @@ const skills = [
 ];
 
 const SkillMarquee = () => {
-  // Quadruple for seamless infinite loop
   const duplicatedSkills = [...skills, ...skills, ...skills, ...skills];
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setIsPaused(true);
+    startX.current = e.pageX - (scrollRef.current?.offsetLeft || 0);
+    scrollLeft.current = scrollRef.current?.scrollLeft || 0;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollRef.current?.offsetLeft || 0);
+    const walk = (x - startX.current) * 2;
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollLeft.current - walk;
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setIsPaused(false);
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      setIsPaused(false);
+    }
+  };
 
   return (
-    <div className="w-full overflow-hidden py-6 mask-gradient">
-      <div 
-        className="flex gap-10 animate-marquee"
+    <div
+      ref={scrollRef}
+      className="w-full overflow-x-auto overflow-y-hidden py-6 mask-gradient scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className={`flex gap-10 ${!isPaused ? 'animate-marquee' : ''}`}
         style={{
           width: "max-content",
+          animationPlayState: isPaused ? 'paused' : 'running',
         }}
       >
         {duplicatedSkills.map((skill, index) => {
