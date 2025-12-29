@@ -94,7 +94,7 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
     <>
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hoveredNav === 'top' && !isVisible
-          ? 'bg-background/60 backdrop-blur-lg'
+          ? 'bg-background/30 backdrop-blur-sm'
           : 'bg-transparent'
           } ${hoveredNav === 'side' && isVisible ? 'pointer-events-none' : ''}`}
         initial={{ y: 0 }}
