@@ -122,7 +122,7 @@ const About = () => {
                   I work on systems meant to be used, from NLP-based mobile applications to data pipelines that handle large-scale records. I care about correctness, maintainability, and whether the solution actually holds up in real conditions.
                 </p>
                 <p>
-                  I'm a CS graduate (GPA 3.89) with experience in mobile development, QA automation, and data-driven engineering. My work includes AI-powered Android apps, data analysis, and improving reliability through structured testing.
+                  I'm a CS graduate (GPA 3.89) with experience in mobile and web development, QA automation, and data-driven engineering. My work includes AI-powered Android apps, information systems, data analysis, and improving reliability through structured testing.
                 </p>
                 <p>
                   I value clear code, practical tools, and steady improvement. I learn continuously because the work demands it, not because it sounds good.
