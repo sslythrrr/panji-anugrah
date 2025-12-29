@@ -8,6 +8,8 @@ const About = () => {
   const containerRef = useRef(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const profileRef = useRef(null);
+  const profileInView = useInView(profileRef, { margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -47,7 +49,7 @@ const About = () => {
   };
 
   return (
-      <section id="about" className="py-16 md:py-24 px-6" ref={containerRef}>
+      <section id="about" className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" ref={containerRef}>
         <motion.div
           className="max-w-5xl mx-auto"
           ref={ref}
@@ -67,14 +69,11 @@ const About = () => {
             </motion.h2>
 
             {/* Bio with Profile */}
-            <motion.div
-              className="flex flex-col md:flex-row gap-8 md:gap-12 mb-16"
-              variants={itemVariants}
-            >
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 mb-16">
               {/* Profile Photo */}
               <motion.div
                 className="flex-shrink-0"
-                variants={itemVariants}
+                ref={profileRef}
               >
                 <motion.div
                   className="relative w-48 md:w-56 mx-auto md:mx-0"
@@ -92,19 +91,17 @@ const About = () => {
                       className="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"
                     />
                   </div>
-
                   {/* Info Badge */}
                   <motion.div
                     className="mt-4 text-center space-y-1"
                     initial={{ opacity: 0, y: 10 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    animate={profileInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.3 }}
                   >
                     {/* Mobile: inline with dot separator */}
                     <p className="text-sm font-medium text-foreground/60 tracking-wide md:hidden">
                       {profileInfo.age} · {profileInfo.location}
                     </p>
-
                     {/* Desktop: stacked */}
                     <div className="hidden md:block space-y-0.5">
                       <p className="text-sm font-medium text-foreground/60 tracking-wide">
@@ -117,23 +114,21 @@ const About = () => {
                   </motion.div>
                 </motion.div>
               </motion.div>
-
               {/* Bio Text */}
-              <motion.div
+              <div
                 className="flex-1 space-y-6 text-base md:text-[17px] text-foreground/80 leading-relaxed"
-                variants={itemVariants}
               >
-                <motion.p variants={itemVariants}>
+                <p>
                   I work on systems meant to be used, from NLP-based mobile applications to data pipelines that handle large-scale records. I care about correctness, maintainability, and whether the solution actually holds up in real conditions.
-                </motion.p>
-                <motion.p variants={itemVariants}>
+                </p>
+                <p>
                   I'm a CS graduate (GPA 3.89) with experience in mobile development, QA automation, and data-driven engineering. My work includes AI-powered Android apps, data analysis, and improving reliability through structured testing.
-                </motion.p>
-                <motion.p variants={itemVariants}>
+                </p>
+                <p>
                   I value clear code, practical tools, and steady improvement. I learn continuously because the work demands it, not because it sounds good.
-                </motion.p>
-              </motion.div>
-            </motion.div>
+                </p>
+              </div>
+            </div>
 
             {/* Weapon of Choice */}
             <motion.div variants={itemVariants} className="mt-16">

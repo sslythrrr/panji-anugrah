@@ -26,7 +26,7 @@ const experiences = [
     duration: "4 months",
     location: "Bogor Regency, West Java, Indonesia · Hybrid",
     description: [
-      "Participated in KKN Tematik \"Membangun Desa\" program at Desa Tegal, Kecamatan Kemang.",
+      "Participated in KKN Tematik (Social Community Service) \"Membangun Desa\" program at Desa Tegal, Kecamatan Kemang.",
       "Conducted field observations and stakeholder interviews with Village Secretary",
       "Designed and developed Village Information System to digitalize public services",
       "Built monolithic full-stack application using Node.js, Express.js, and MySQL",
@@ -39,7 +39,7 @@ const experiences = [
 const Experience = () => {
   const containerRef = useRef(null);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -51,7 +51,7 @@ const Experience = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-      <section id="experience" className="py-16 md:py-24 px-6" ref={containerRef}>
+      <section id="experience" className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" ref={containerRef}>
         <div className="max-w-5xl mx-auto" ref={ref}>
           <motion.h2
             className="text-section font-display mb-16 md:mb-20"

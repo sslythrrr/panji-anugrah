@@ -104,7 +104,7 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
         transition={{ duration: 0.2, ease: "easeInOut" }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex items-center justify-end h-16 md:h-20">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo/Icon + Name (statis) 
             <div className="flex items-center">
               <div className="relative w-8 h-8 md:w-14 md:h-14">
@@ -117,8 +117,21 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
               </div>
             </div>*/}
 
+            {/* Mobile Menu Button interaktif */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 hoverable order-1"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+
             {/* Desktop Navigation interaktif */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-8 ml-auto">
               {navItems.map((item) => (
                 <button
                   key={item.label}
@@ -133,19 +146,6 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
                 </button>
               ))}
             </div>
-
-            {/* Mobile Menu Button interaktif */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hoverable"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
           </div>
         </div>
       </motion.nav>
@@ -165,10 +165,10 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="absolute right-0 top-0 h-full w-64 bg-background border-l border-secondary"
-              initial={{ x: "100%" }}
+              className="absolute left-0 top-0 h-full w-64 bg-background border-r border-secondary"
+              initial={{ x: "-100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
               <div className="flex flex-col gap-1 p-6 pt-24">

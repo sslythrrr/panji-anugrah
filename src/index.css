@@ -197,6 +197,40 @@
     @apply px-3 py-1 text-xs font-medium rounded-full bg-secondary text-foreground/80 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105;
   }
 
+  /* Border Runner */
+  .border-runner {
+    @apply absolute pointer-events-none rounded-lg;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .border-runner {
+    bottom: 0;
+    right: 0;
+    animation-name: border-run;
+  }
+
+  /* Border Chase Effect */
+  .border-chase-container {
+    @apply relative;
+  }
+
+  .border-chase-container::before,
+  .border-chase-container::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg pointer-events-none;
+    border: 2px solid;
+    border-image: linear-gradient(135deg,
+        hsl(43, 47%, 59%),
+        hsl(0, 0%, 96%)) 1;
+    opacity: 0;
+  }
+
+  .border-chase-container.animate-chase::after {
+    animation: border-chase 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
   /* Timeline Line */
   .timeline-line {
     @apply absolute left-1/2 top-0 w-px h-full bg-secondary -translate-x-1/2;
@@ -215,6 +249,10 @@
 
   .animate-wave-line {
     animation: wave-underline 1s ease-in-out forwards;
+  }
+
+  .animate-wave-line2 {
+    animation: wave-underline2 1s ease-in-out forwards;
   }
 
   .scrollbar-hide {
@@ -385,6 +423,49 @@
   }
 }
 
+@keyframes wave-underline2 {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes border-chase{
+  0% {
+    clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  25% {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 100% 100%);
+  }
+
+  50% {
+    clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+  }
+
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 0;
+  }
+}
+
 /* Marquee Animation */
 .animate-marquee {
   animation: marquee 90s linear infinite;
@@ -402,6 +483,63 @@
       black 10%,
       black 90%,
       transparent 100%);
+}
+
+/* Border Runner Animation */
+@keyframes border-run {
+  0% {
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid hsl(43, 47%, 59%);
+    border-left: none;
+    border-top: none;
+    border-right: none;
+  }
+
+  25% {
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid hsl(43, 47%, 59%);
+    border-left: 2px solid hsl(43, 47%, 59%);
+    border-top: none;
+    border-right: none;
+  }
+
+  50% {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid hsl(49, 63%, 43%); 
+    border-left: 2px solid hsl(49, 63%, 43%);
+    border-top: 2px solid hsl(49, 63%, 43%);
+    border-right: none;
+  }
+
+  75% {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    border-right: none;
+    border-bottom: 2px solid hsl(43, 47%, 59%);
+    border-left: 2px solid hsl(43, 47%, 59%);
+    border-top: 2px solid hsl(43, 47%, 59%);
+  }
+
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border-right: none;
+    border-bottom: 2px solid hsl(51, 82%, 34%);
+    border-left: 2px solid hsl(51, 82%, 34%);
+    border-top: 2px solid hsl(51, 82%, 34%);
+  }
 }
 
 /* Reduced Motion */

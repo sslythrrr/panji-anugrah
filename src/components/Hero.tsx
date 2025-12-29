@@ -1,6 +1,9 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ChevronDown, Download } from "lucide-react";
 import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
+
+import { useRef, useEffect, useState } from "react";
+
 
 
 const Hero = () => {
@@ -8,17 +11,28 @@ const Hero = () => {
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
+  const heroRef = useRef(null);
+  const isInView = useInView(heroRef, { margin: "-100px" });
+  const [autoWave, setAutoWave] = useState(false);
+
+  useEffect(() => {
+    if (isInView) {
+      setAutoWave(true);
+      const timeout = setTimeout(() => setAutoWave(false), 1200); // durasi animasi
+      return () => clearTimeout(timeout);
+    }
+  }, [isInView]);
+
   const handleScrollDown = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleResumeDownload = () => {
-    // Opens resume in new tab - replace with actual resume URL
     window.open("/resume.pdf", "_blank");
   };
 
   return (
-    <div className="snap-section">
+    <div className="snap-section" ref={heroRef}>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Subtle animated gradient background */}
         <div className="absolute inset-0 opacity-[0.08]">
@@ -43,8 +57,17 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           >
             <span className="gradient-text relative group inline-block overflow-hidden">
+              <span
+                className={`absolute right-0 top-1 w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent pointer-events-none
+                  ${(autoWave ? 'animate-wave-line2' : '')} group-hover:animate-wave-line2`}
+                style={{ opacity: 0, transform: 'translateX(100%)' }}
+              />
               Panji Anugrah
-              <span className="absolute left-0 bottom-1 w-full h-[1px] group-hover:animate-wave-line bg-gradient-to-r from-transparent via-accent to-transparent pointer-events-none" style={{ opacity: 0, transform: 'translateX(-100%)' }} />
+              <span
+                className={`absolute left-0 bottom-1 w-full h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent pointer-events-none
+                  ${(autoWave ? 'animate-wave-line' : '')} group-hover:animate-wave-line`}
+                style={{ opacity: 0, transform: 'translateX(-100%)' }}
+              />
             </span>
           </motion.h1>
 
@@ -55,17 +78,17 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
           >
-            Computer Science
+            Software Engineer
           </motion.p>
 
           {/* Specialties */}
           <motion.p
-            className="text-lg md:text-xl text-accent font-light tracking-widest mb-8"
+            className="text-md md:text-lg text-accent font-light tracking-widest mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
           >
-            Mobile • QA • Data Science
+            Mobile • QA • Web • Data Science
           </motion.p>
 
           {/* Resume Download Button */}

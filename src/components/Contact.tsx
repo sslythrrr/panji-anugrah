@@ -29,6 +29,8 @@ const Contact = () => {
   const containerRef = useRef(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const socialsRef = useRef(null);
+  const socialsInView = useInView(socialsRef, { margin: "-100px" });
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -39,7 +41,7 @@ const Contact = () => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
 
   return (
-    <section id="contact" className="py-16 md:py-24 px-6" ref={containerRef}>
+    <section id="contact" className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" ref={containerRef}>
       <motion.div 
         className="max-w-2xl mx-auto text-center"
         ref={ref}
@@ -80,11 +82,9 @@ const Contact = () => {
           <span>Download Resume</span>
         </motion.a>
 */}
-        <motion.div
+        <div
           className="flex flex-col gap-4"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          ref={socialsRef}
         >
           {socials.map((social, index) => (
             <motion.a
@@ -93,10 +93,10 @@ const Contact = () => {
               target={social.name !== "Email" ? "_blank" : undefined}
               rel={social.name !== "Email" ? "noopener noreferrer" : undefined}
               className="group flex items-center justify-between p-4 md:p-5 border border-secondary rounded-lg hover:border-foreground/30 transition-all duration-300 hoverable magnetic-btn"
-              initial={{ opacity: 0, x: -30, y: 10 }}
-              animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+              initial={{ x: -30, y: 10 }}
+              animate={socialsInView ? { x: 0, y: 0 } : {}}
               transition={{ 
-                duration: 0.5, 
+                duration: 0.2, 
                 delay: 0.25 + index * 0.08,
                 ease: [0.22, 1, 0.36, 1]
               }}
@@ -116,7 +116,7 @@ const Contact = () => {
               <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </motion.a>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );
