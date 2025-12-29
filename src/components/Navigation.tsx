@@ -136,7 +136,7 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
                 <button
                   key={item.label}
                   onClick={() => handleNavClick(item.href)}
-                  className={`relative text-sm font-medium transition-colors duration-300 hoverable ${(activeSection === item.href.slice(1)) ||
+                  className={`relative text-md font-medium transition-colors duration-300 hoverable ${(activeSection === item.href.slice(1)) ||
                     (item.href === "#hero" && activeSection === "")
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -176,7 +176,7 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
                   <motion.button
                     key={item.label}
                     onClick={() => handleNavClick(item.href)}
-                    className={`text-left text-2xl font-display font-semibold py-3 transition-colors hoverable ${(activeSection === item.href.slice(1)) ||
+                    className={`text-left text-xl font-display font-semibold py-3 transition-colors hoverable ${(activeSection === item.href.slice(1)) ||
                         (item.href === "#hero" && activeSection === "")
                         ? "text-foreground"
                         : "text-foreground hover:text-accent"

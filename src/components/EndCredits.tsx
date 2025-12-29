@@ -10,7 +10,7 @@ const EndCredits = () => {
   };
 
   return (
-    <section className="py-10 px-6 border-t border-secondary/50">
+    <section className="py-10 px-6">
       <motion.div
         className="max-w-xl mx-auto text-center"
         ref={ref}
