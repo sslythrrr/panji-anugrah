@@ -88,7 +88,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
           >
-            Mobile • QA • Web • Data Science
+            Mobile • Web • QA • Data Science
           </motion.p>
 
           {/* Resume Download Button */}

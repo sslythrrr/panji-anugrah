@@ -107,10 +107,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Tubagus Panji Anugrah</title>
+        <title>Tubagus Panji Anugrah | Personal Portfolio</title>
         <meta
           name="description"
-          content="Portfolio of Tubagus Panji Anugrah,Computer Science graduate specializing in mobile development, QA automation, and data science. Building systems that solve real problems."
+          content="CS Graduate specializing in Software Dev (Mobile/Web), QA Automation, & Data Science. Building scalable systems that solve real problems. See my work!"
         />
         <meta name="keywords" content="Tubagus Panji Anugrah, Mobile Developer, QA Engineer, Data Scientist, Portfolio, Bogor, Universitas Pakuan" />
         <link rel="canonical" href="https://panjianugrah.me" />
