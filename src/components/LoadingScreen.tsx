@@ -7,7 +7,7 @@ interface LoadingScreenProps {
   onFinish?: () => void;
 }
 
-const words = ["yow", "hola..."];
+const words = ["yooo", "welcome"];
 
 
 
