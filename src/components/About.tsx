@@ -130,17 +130,18 @@ const About = () => {
               </motion.div>
             </motion.div>
             {/* Bio Text */}
-            <div
-              className="flex-1 space-y-6 text-base md:text-[17px] text-foreground/80 leading-relaxed"
-            >
+            <div className="flex-1 space-y-6 text-base md:text-[17px] text-foreground/80 leading-relaxed">
               <p>
-                I work on systems meant to be used, from NLP-based mobile applications to data pipelines that handle large-scale records. I care about correctness, maintainability, and whether the solution actually holds up in real conditions.
+                {/* Ubah fokus ke PROSES */}
+                Building systems meant to be used is my priority—from NLP-based mobile applications to data pipelines that handle large-scale records. The focus is always on correctness, maintainability, and whether the solution holds up in real conditions.
               </p>
               <p>
-                I'm a CS graduate (GPA 3.89) with experience in mobile and web development, QA automation, and data-driven engineering. My work includes AI-powered Android apps, information systems, data analysis, and improving reliability through structured testing.
+                {/* Ubah fokus ke KUALIFIKASI */}
+                As a CS graduate with a 3.89 GPA, I bring a strong foundation in mobile and web development, QA automation, and data-driven engineering. My portfolio includes AI-powered Android apps, information systems, and reliability testing.
               </p>
               <p>
-                I value clear code, practical tools, and steady improvement. I learn continuously because the work demands it, not because it sounds good.
+                {/* Ubah fokus ke VALUES */}
+                Beyond just writing code, I value practicality and steady improvement. Continuous learning isn't just a buzzword for me; it's a necessity demanded by the work itself.
               </p>
             </div>
           </div>
@@ -148,7 +149,7 @@ const About = () => {
           {/* Weapon of Choice */}
           <motion.div variants={itemVariants} className="mt-16">
             <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-6 text-center">
-              Weapon of Choice
+              Tech Stack & Tools
             </h3>
             <SkillMarquee />
           </motion.div>

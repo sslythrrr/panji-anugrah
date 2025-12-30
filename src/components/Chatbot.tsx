@@ -36,25 +36,25 @@ const botResponses: ResponseRule[] = [
     keywords: ["hello", "hi", "hey", "halo", "yow", "sup", "yo"],
     response: [
       "Hey there! I'm Arcturus, your guide to this portfolio. How can I help you today?",
-      "Hello! Welcome aboard. I'm Arcturus — ask me anything about the work showcased here.",
+      "Hello! Welcome aboard. I'm Arcturus, ask me anything about the work showcased here.",
       "Hey! Good to see you. I'm Arcturus, ready to help you explore!",
     ],
     category: "greeting",
   },
   {
     keywords: ["good morning", "morning"],
-    response: "Good morning! Hope you're having a great day. I'm Arcturus — what can I help you with?",
+    response: "Good morning! Hope you're having a great day. I'm Arcturus, what can I help you with?",
     category: "greeting",
   },
   {
     keywords: ["good night", "night"],
-    response: "Good night! Thanks for stopping by. Come back anytime — Arcturus will be here!",
+    response: "Good night! Thanks for stopping by. Come back anytime, Arcturus will be here!",
     category: "greeting",
   },
 
   {
     keywords: ["name", "who are you", "siapa", "what are you", "your name", "arcturus"],
-    response: "I'm Arcturus — named after one of the brightest stars in the night sky. I'm your personal guide to navigating this portfolio. Think of me as your digital concierge here!",
+    response: "I'm Arcturus, named after one of the brightest stars in the night sky. I'm your personal guide to navigating this portfolio. Think of me as your digital concierge here!",
     followUp: "Would you like to know about projects, experience, or skills?",
   },
   {
@@ -67,7 +67,7 @@ const botResponses: ResponseRule[] = [
 
   {
     keywords: ["project", "work", "portfolio", "showcase", "built", "made", "create"],
-    response: "You can find all projects in the Projects section — each card is clickable for full details including images, descriptions, and tech stacks used.",
+    response: "You can find all projects in the Projects section, each card is clickable for full details including images, descriptions, and tech stacks used.",
     followUp: "Want me to tell you about any specific type of project?",
   },
   {
@@ -118,7 +118,7 @@ const botResponses: ResponseRule[] = [
 
   {
     keywords: ["skill", "tech", "stack", "language", "tool", "technology", "technologies"],
-    response: "Check out the scrolling marquee in the About section — it shows all technologies, languages, and tools. From React to Python to Flutter!",
+    response: "Check out the scrolling marquee in the About section, it shows all technologies, languages, and tools. From React to Python to Flutter!",
   },
   {
     keywords: ["python", "programming"],
@@ -126,7 +126,7 @@ const botResponses: ResponseRule[] = [
   },
   {
     keywords: ["javascript", "typescript", "js", "ts"],
-    response: "JavaScript and TypeScript are core technologies here — used heavily in React and Node.js projects!",
+    response: "JavaScript and TypeScript are core technologies here, used heavily in React and Node.js projects!",
   },
 
   {
@@ -180,7 +180,7 @@ const botResponses: ResponseRule[] = [
 
   {
     keywords: ["about", "who", "background", "story", "introduction"],
-    response: "The About section tells the story — scroll down a bit from the hero and you'll find the background, journey, and what drives the work.",
+    response: "The About section tells the story, scroll down a bit from the hero and you'll find the background, journey, and what drives the work.",
   },
   {
     keywords: ["location", "where", "based", "country", "city"],
@@ -206,7 +206,7 @@ const botResponses: ResponseRule[] = [
   {
     keywords: ["bye", "goodbye", "see you", "later", "leaving", "gotta go"],
     response: [
-      "Take care! Hope you enjoyed exploring the portfolio. — Arcturus",
+      "Take care! Hope you enjoyed exploring the portfolio., Arcturus",
       "Goodbye! Come back anytime. 👋",
       "See you around! Don't hesitate to reach out.",
     ],
@@ -217,7 +217,7 @@ const botResponses: ResponseRule[] = [
     response: [
       "Why do programmers prefer dark mode? Because light attracts bugs! 😄",
       "A SQL query walks into a bar, walks up to two tables and asks: 'Can I join you?'",
-      "There are only 10 types of people — those who understand binary and those who don't!",
+      "There are only 10 types of people, those who understand binary and those who don't!",
     ],
   },
   {
