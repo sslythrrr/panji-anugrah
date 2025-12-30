@@ -82,6 +82,9 @@ const Index = () => {
 
   useKonamiCode(triggerKonami);
   useTypedText("matrix", triggerMatrix);
+  useTypedText("panji", triggerMatrix);
+  useTypedText("PANJI", triggerMatrix);
+  useTypedText("help", toggleCommandPalette);
   useCommandPaletteShortcut(toggleCommandPalette);
   // --- DATA SCHEMA JSON-LD ---
   const schemaData = {

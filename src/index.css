@@ -6,62 +6,68 @@
 
 @layer base {
   :root {
-    /* Dark Luxury Theme - Cinematic Noir */
-    --background: 0 0% 4%;
-    /* #0a0a0a - true black */
-    --background-secondary: 0 0% 10%;
-    /* #1a1a1a - charcoal */
+    /* silverblade*/
+    --background: 200 20% 3%;
+    /* #080a0d - pure obsidian black */
+    --background-secondary: 200 18% 6%;
+    /* #0f1215 - deep stone */
     --foreground: 0 0% 96%;
-    /* #f5f5f5 - off-white */
+    /* #f5f5f5 - soft white */
 
-    --card: 0 0% 10%;
+    --card: 200 18% 6%;
     --card-foreground: 0 0% 96%;
 
-    --popover: 0 0% 6%;
+    --popover: 200 20% 4%;
     --popover-foreground: 0 0% 96%;
 
     --primary: 0 0% 96%;
-    --primary-foreground: 0 0% 4%;
+    --primary-foreground: 200 20% 3%;
 
-    --secondary: 0 0% 16%;
-    /* #2a2a2a */
+    --secondary: 210 10% 20%;
+    /* #30343a - iron gray */
     --secondary-foreground: 0 0% 96%;
 
-    --muted: 0 0% 16%;
-    --muted-foreground: 0 0% 42%;
-    /* #6a6a6a */
+    --muted: 210 10% 20%;
+    --muted-foreground: 210 8% 48%;
+    /* #757a82 - muted steel */
 
-    --accent: 43 47% 59%;
-    /* #c9a961 - muted gold */
-    --accent-foreground: 0 0% 4%;
+    --accent: 210 15% 70%;
+    /* #adb5bd - polished silver */
+    --accent-foreground: 200 20% 3%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 96%;
 
-    --border: 0 0% 16%;
-    --input: 0 0% 16%;
-    --ring: 43 47% 59%;
+    --border: 200 15% 12%;
+    --input: 200 15% 12%;
+    --ring: 210 15% 70%;
 
     --radius: 0.5rem;
 
-    /* Custom Design Tokens */
-    --glow-gold: 0 0 40px hsla(43, 47%, 59%, 0.3);
-    --glow-white: 0 0 30px hsla(0, 0%, 96%, 0.15);
-    --gradient-dark: linear-gradient(135deg, hsl(270, 50%, 8%) 0%, hsl(210, 50%, 8%) 50%, hsl(0, 0%, 6%) 100%);
+    /* Custom Design Tokens - Silver Blade */
+    --glow-silver: 0 0 30px hsla(210, 15%, 70%, 0.25);
+    --glow-steel: 0 0 25px hsla(210, 20%, 80%, 0.2);
+    --gradient-dark: linear-gradient(135deg, hsl(200, 20%, 3%) 0%, hsl(210, 15%, 5%) 50%, hsl(200, 20%, 3%) 100%);
+    --blade-shine: 210 20% 85%;
+    /* #d3dae3 - bright blade edge */
+    --dark-steel: 210 12% 40%;
+    /* #5d646e - forged steel */
+    --iron-core: 210 8% 30%;
+    /* #474c54 - iron base */
 
-    /* Sidebar vars (keeping for compatibility) */
-    --sidebar-background: 0 0% 6%;
+    /* Sidebar vars */
+    --sidebar-background: 200 20% 4%;
     --sidebar-foreground: 0 0% 96%;
     --sidebar-primary: 0 0% 96%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 16%;
+    --sidebar-primary-foreground: 200 20% 3%;
+    --sidebar-accent: 200 15% 12%;
     --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 43 47% 59%;
+    --sidebar-border: 200 15% 12%;
+    --sidebar-ring: 210 15% 70%;
   }
 
   .dark {
-    --background: 0 0% 4%;
+    --background: 200 20% 3%;
     --foreground: 0 0% 96%;
   }
 }
@@ -98,15 +104,15 @@
     }
   }
 
-  /* Selection styling */
+  /* Selection styling - Silver Gleam */
   ::selection {
-    @apply bg-accent/30 text-foreground;
+    @apply bg-accent/20 text-foreground;
   }
 }
 
 @layer components {
 
-  /* Hero Link Underline - Elegant & Smooth */
+  /* Hero Link Underline - Blade Slash */
   .link-underline-hero {
     @apply relative;
   }
@@ -117,12 +123,11 @@
     bottom: 0.15em;
     height: 1px;
     width: 100%;
-    /* Pastikan ada ini */
     background: linear-gradient(90deg,
         transparent 0%,
-        hsl(43, 47%, 59%) 20%,
-        hsl(0, 0%, 70%) 50%,
-        hsl(43, 47%, 59%) 80%,
+        hsl(210, 15%, 70%) 20%,
+        hsl(210, 20%, 85%) 50%,
+        hsl(210, 15%, 70%) 80%,
         transparent 100%);
     opacity: 0;
     transform: translateX(-100%);
@@ -133,14 +138,14 @@
     animation: wave-underline 1.5s ease-in-out infinite;
   }
 
-  /* Gradient Text Animation */
+  /* Gradient Text Animation - Steel Shimmer */
   .gradient-text {
     background: linear-gradient(135deg,
-        hsl(0, 0%, 100%) 0%,
-        hsl(43, 60%, 75%) 25%,
-        hsl(0, 0%, 100%) 50%,
-        hsl(43, 60%, 75%) 75%,
-        hsl(0, 0%, 100%) 100%);
+        hsl(0, 0%, 96%) 0%,
+        hsl(210, 15%, 70%) 25%,
+        hsl(210, 20%, 85%) 50%,
+        hsl(210, 15%, 70%) 75%,
+        hsl(0, 0%, 96%) 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -156,7 +161,7 @@
   .magnetic-btn::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--accent) / 0.15) 0%, transparent 50%);
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--accent) / 0.12) 0%, transparent 50%);
   }
 
   .magnetic-btn:hover::before {
@@ -170,29 +175,29 @@
 
   .link-underline::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-px bg-foreground origin-left scale-x-0 transition-transform duration-300;
+    @apply absolute bottom-0 left-0 w-full h-px bg-accent origin-left scale-x-0 transition-transform duration-300;
   }
 
   .link-underline:hover::after {
     @apply scale-x-100;
   }
 
-  /* Glass Effect */
+  /* Glass Effect - Metallic Blur */
   .glass {
-    @apply bg-background/90 backdrop-blur-xl;
+    @apply bg-background/92 backdrop-blur-xl;
   }
 
-  /* Card Hover Effect */
+  /* Card Hover Effect - Silver Glow */
   .card-hover {
     @apply transition-all duration-500 ease-out;
   }
 
   .card-hover:hover {
     @apply -translate-y-2;
-    box-shadow: var(--glow-gold);
+    box-shadow: var(--glow-silver);
   }
 
-  /* Tech Tag */
+  /* Tech Tag - Forged Metal */
   .tech-tag {
     @apply px-3 py-1 text-xs font-medium rounded-full bg-secondary text-foreground/80 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105;
   }
@@ -222,8 +227,8 @@
     @apply absolute inset-0 rounded-lg pointer-events-none;
     border: 2px solid;
     border-image: linear-gradient(135deg,
-        hsl(43, 47%, 59%),
-        hsl(0, 0%, 96%)) 1;
+        hsl(210, 15%, 70%),
+        hsl(210, 20%, 85%)) 1;
     opacity: 0;
   }
 
@@ -363,11 +368,11 @@
 
   0%,
   100% {
-    box-shadow: 0 0 20px hsla(43, 47%, 59%, 0.2);
+    box-shadow: 0 0 20px hsla(210, 15%, 70%, 0.2);
   }
 
   50% {
-    box-shadow: 0 0 40px hsla(43, 47%, 59%, 0.4);
+    box-shadow: 0 0 30px hsla(210, 15%, 70%, 0.35);
   }
 }
 
@@ -485,14 +490,14 @@
       transparent 100%);
 }
 
-/* Border Runner Animation */
+/* Border Runner Animation - Silver Blade Flash */
 @keyframes border-run {
   0% {
     width: 0;
     height: 0;
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid hsl(43, 47%, 59%);
+    border-bottom: 2px solid hsl(210, 15%, 70%);
     border-left: none;
     border-top: none;
     border-right: none;
@@ -503,8 +508,8 @@
     height: 0;
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid hsl(43, 47%, 59%);
-    border-left: 2px solid hsl(43, 47%, 59%);
+    border-bottom: 2px solid hsl(210, 15%, 70%);
+    border-left: 2px solid hsl(210, 15%, 70%);
     border-top: none;
     border-right: none;
   }
@@ -514,9 +519,9 @@
     height: 100%;
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid hsl(49, 63%, 43%); 
-    border-left: 2px solid hsl(49, 63%, 43%);
-    border-top: 2px solid hsl(49, 63%, 43%);
+    border-bottom: 2px solid hsl(210, 20%, 85%); 
+    border-left: 2px solid hsl(210, 20%, 85%);
+    border-top: 2px solid hsl(210, 20%, 85%);
     border-right: none;
   }
 
@@ -526,9 +531,9 @@
     bottom: 0;
     right: 0;
     border-right: none;
-    border-bottom: 2px solid hsl(43, 47%, 59%);
-    border-left: 2px solid hsl(43, 47%, 59%);
-    border-top: 2px solid hsl(43, 47%, 59%);
+    border-bottom: 2px solid hsl(210, 15%, 70%);
+    border-left: 2px solid hsl(210, 15%, 70%);
+    border-top: 2px solid hsl(210, 15%, 70%);
   }
 
   100% {
@@ -536,9 +541,9 @@
     height: 100%;
     opacity: 0;
     border-right: none;
-    border-bottom: 2px solid hsl(51, 82%, 34%);
-    border-left: 2px solid hsl(51, 82%, 34%);
-    border-top: 2px solid hsl(51, 82%, 34%);
+    border-bottom: 2px solid hsl(210, 18%, 75%);
+    border-left: 2px solid hsl(210, 18%, 75%);
+    border-top: 2px solid hsl(210, 18%, 75%);
   }
 }
 

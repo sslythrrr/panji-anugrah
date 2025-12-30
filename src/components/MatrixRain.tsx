@@ -28,13 +28,13 @@ const MatrixRain = ({ isActive, duration = 3000 }: MatrixRainProps) => {
       drops[i] = Math.random() * -100;
     }
 
-    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const chars = "Like the scarlet night veiling the dark You can hide your fear Can lie, my dear このまま 夢を見て 血だらけの翼 広げて Like a fallen angel 時の風に 流されて 落ちてゆく Into the starry night 女神のように 抱きしめて 永遠を Fly into heaven";
 
     const draw = () => {
       ctx.fillStyle = "rgba(10, 10, 10, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#0f0";
+      ctx.fillStyle = "#80d9ce";
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {

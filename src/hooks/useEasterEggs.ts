@@ -2,16 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 export const useKonamiCode = (callback: () => void) => {
   const konamiCode = [
-    "ArrowUp",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowLeft",
-    "ArrowRight",
-    "KeyB",
-    "KeyA",
+    "ControlLeft",
+    "KeyC",
   ];
   const currentIndex = useRef(0);
 

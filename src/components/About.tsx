@@ -133,7 +133,7 @@ const About = () => {
             <div className="flex-1 space-y-6 text-base md:text-[17px] text-foreground/80 leading-relaxed">
               <p>
                 {/* Ubah fokus ke PROSES */}
-                Building systems meant to be used is my priority—from NLP-based mobile applications to data pipelines that handle large-scale records. The focus is always on correctness, maintainability, and whether the solution holds up in real conditions.
+                Building systems meant to be used is my priority, from NLP based mobile applications to data pipelines that handle large scale records. The focus is always on correctness, maintainability, and whether the solution holds up in real conditions.
               </p>
               <p>
                 {/* Ubah fokus ke KUALIFIKASI */}
