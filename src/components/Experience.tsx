@@ -26,7 +26,7 @@ const experiences = [
     duration: "4 months",
     location: "Bogor Regency, West Java, Indonesia · Hybrid",
     description: [
-      "Participated in KKN Tematik (Social Community Service) \"Membangun Desa\" program at Desa Tegal, Kecamatan Kemang.",
+      "Participated in KKN Tematik (Student Community Service) \"Membangun Desa\" program at Desa Tegal, Kecamatan Kemang.",
       "Conducted field observations and stakeholder interviews with Village Secretary",
       "Designed and developed Village Information System to digitalize public services",
       "Built monolithic full-stack application using Node.js, Express.js, and MySQL",
@@ -113,8 +113,8 @@ const Experience = () => {
                             <h3 className="text-lg md:text-xl font-display font-semibold mb-0 flex items-center gap-1">
                               {exp.title}
                               {(index === 1 || index === 0) && (
-                                <span className="ml-2 font-mono px-2 py-0.5 rounded align-middle" style={{ fontSize: '0.85em', fontWeight: 500, color: '#888' }}>
-                                  {index === 0 ? '- Intern' : '- KKN Tematik'}
+                                <span className="ml-2 font-mono px-2 py-0.5 rounded align-middle" style={{ fontSize: '0.75em', fontWeight: 500, color: '#888' }}>
+                                  {index === 0 ? '- Intern' : '- Volunteer'}
                                 </span>
                               )}
                             </h3>

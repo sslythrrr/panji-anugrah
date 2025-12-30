@@ -451,7 +451,7 @@ const Chatbot = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleOpen}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-secondary/80 backdrop-blur-sm border border-border/30 flex items-center justify-center text-foreground/70 hover:text-foreground hover:border-border/50 transition-all duration-300 hoverable"
+            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-secondary/40 backdrop-blur-sm border border-border/30 flex items-center justify-center text-foreground/70 hover:text-foreground hover:border-border/50 transition-all duration-300 hoverable"
             style={{
               boxShadow: "0 4px 20px rgba(0, 0, 0, 0.4)",
             }}

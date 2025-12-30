@@ -143,6 +143,12 @@ const projects = [
 
 const allCategories = ["All", "Mobile", "Data Science", "Data Engineering", "Web", "Dynamic Simulation", "Machine Learning"];
 
+
+// Consistent dark gradient for all thumbnails
+const darkGradient = 'from-[#18181b] via-[#23232a] to-[#101014]';
+
+const getProjectGradient = () => darkGradient;
+
 const Projects = () => {
   // Preload image utility
   const preloadImage = (src: string) => {
@@ -348,21 +354,29 @@ const Projects = () => {
                             </>
                           )}
 
-                          {/* Thumbnail - reduced height */}
-                          <div className="aspect-[4/2.5] bg-gradient-to-br from-secondary/50 to-background relative overflow-hidden">
+                          {/* Thumbnail - consistent dark gradient, always blurry bg, centered image */}
+                          <div
+                            className={`aspect-[4/2.5] bg-gradient-to-br ${getProjectGradient()} relative overflow-hidden flex items-center justify-center`}
+                          >
                             {project.images && project.images.length > 0 ? (
                               <>
+                                {/* Blurred background image for depth */}
+                                <img
+                                  src={project.images[0]}
+                                  alt={project.title + " blurred background"}
+                                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg opacity-50 pointer-events-none select-none"
+                                  aria-hidden="true"
+                                />
+                                {/* Uniform dark overlay for all */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-[#18181b]/100 to-black/90 opacity-100 pointer-events-none select-none" />
+                                {/* Main image centered, fit contain, with shadow */}
                                 <img
                                   src={project.images[0]}
                                   alt={project.title + " thumbnail"}
-                                  className="w-full h-full object-cover transition-all duration-300 blur-[0px] brightness-80"
+                                  className="relative z-10 max-h-[95%] max-w-[90%] object-contain rounded-md shadow-lg border border-white/10 bg-white/5"
                                   loading="lazy"
                                   decoding="async"
-                                  width={400}
-                                  height={200}
                                 />
-                                {/* Stronger dark overlay for intentional style 
-                                <div className="absolute inset-0 bg-black/20 pointer-events-none" />*/}
                               </>
                             ) : (
                               <div className="absolute inset-0 flex items-center justify-center">
@@ -371,7 +385,6 @@ const Projects = () => {
                                 </span>
                               </div>
                             )}
-                            <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
                           </div>
 
                           {/* Compact Content */}

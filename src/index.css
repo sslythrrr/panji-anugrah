@@ -225,7 +225,7 @@
   .border-chase-container::after {
     content: '';
     @apply absolute inset-0 rounded-lg pointer-events-none;
-    border: 2px solid;
+    border: 1px solid;
     border-image: linear-gradient(135deg,
         hsl(210, 15%, 70%),
         hsl(210, 20%, 85%)) 1;
@@ -451,23 +451,28 @@
 @keyframes border-chase{
   0% {
     clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
+    border-width: 1px;
   }
 
   25% {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 100% 100%);
+    border-width: 1px;
   }
 
   50% {
     clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+    border-width: 1px;
   }
 
   75% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-width: 1px;
   }
 
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     opacity: 0;
+    border-width: 1px;
   }
 }
 
@@ -497,7 +502,7 @@
     height: 0;
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid hsl(210, 15%, 70%);
+    border-bottom: 1px solid hsl(210, 15%, 70%);
     border-left: none;
     border-top: none;
     border-right: none;
@@ -508,8 +513,8 @@
     height: 0;
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid hsl(210, 15%, 70%);
-    border-left: 2px solid hsl(210, 15%, 70%);
+    border-bottom: 1px solid hsl(210, 15%, 70%);
+    border-left: 1px solid hsl(210, 15%, 70%);
     border-top: none;
     border-right: none;
   }
@@ -519,9 +524,9 @@
     height: 100%;
     bottom: 0;
     right: 0;
-    border-bottom: 2px solid hsl(210, 20%, 85%); 
-    border-left: 2px solid hsl(210, 20%, 85%);
-    border-top: 2px solid hsl(210, 20%, 85%);
+    border-bottom: 1px solid hsl(210, 20%, 85%); 
+    border-left: 1px solid hsl(210, 20%, 85%);
+    border-top: 1px solid hsl(210, 20%, 85%);
     border-right: none;
   }
 
@@ -531,9 +536,9 @@
     bottom: 0;
     right: 0;
     border-right: none;
-    border-bottom: 2px solid hsl(210, 15%, 70%);
-    border-left: 2px solid hsl(210, 15%, 70%);
-    border-top: 2px solid hsl(210, 15%, 70%);
+    border-bottom: 1px solid hsl(210, 15%, 70%);
+    border-left: 1px solid hsl(210, 15%, 70%);
+    border-top: 1px solid hsl(210, 15%, 70%);
   }
 
   100% {
@@ -541,9 +546,9 @@
     height: 100%;
     opacity: 0;
     border-right: none;
-    border-bottom: 2px solid hsl(210, 18%, 75%);
-    border-left: 2px solid hsl(210, 18%, 75%);
-    border-top: 2px solid hsl(210, 18%, 75%);
+    border-bottom: 1px solid hsl(210, 18%, 75%);
+    border-left: 1px solid hsl(210, 18%, 75%);
+    border-top: 1px solid hsl(210, 18%, 75%);
   }
 }
 
