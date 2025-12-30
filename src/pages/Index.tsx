@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Helmet } from "react-helmet-async"; // <--- 1. JANGAN LUPA IMPORT INI
+import { Helmet } from "react-helmet-async";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import Navigation from "@/components/Navigation";
@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import EndCredits from "@/components/EndCredits";
 import CommandPalette from "@/components/CommandPalette";
 import MatrixRain from "@/components/MatrixRain";
+import Chatbot from "@/components/Chatbot";
 import { useKonamiCode, useTypedText, useCommandPaletteShortcut } from "@/hooks/useEasterEggs";
 
 const Index = () => {
@@ -162,6 +163,8 @@ const Index = () => {
       <EndCredits />
       {/* Footer */}
       <Footer />
+      {/* Chatbot */}
+      <Chatbot />
     </>
   );
 };
