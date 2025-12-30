@@ -17,14 +17,12 @@ interface LinkButton {
   icon: "github" | "linkedin" | "mail" | "resume" | "github" | "instagram" | "facebook" | "external";
 }
 
-// Haptic feedback
 const triggerHaptic = (style: "light" | "medium" = "light") => {
   if ("vibrate" in navigator) {
     navigator.vibrate(style === "light" ? 10 : 25);
   }
 };
 
-// Enhanced response system with categories and follow-ups
 interface ResponseRule {
   keywords: string[];
   response: string | string[];
@@ -34,7 +32,6 @@ interface ResponseRule {
 }
 
 const botResponses: ResponseRule[] = [
-  // Greetings
   {
     keywords: ["hello", "hi", "hey", "halo", "yow", "sup", "yo"],
     response: [
@@ -55,7 +52,6 @@ const botResponses: ResponseRule[] = [
     category: "greeting",
   },
 
-  // Identity
   {
     keywords: ["name", "who are you", "siapa", "what are you", "your name", "arcturus"],
     response: "I'm Arcturus — named after one of the brightest stars in the night sky. I'm your personal guide to navigating this portfolio. Think of me as your digital concierge here!",
@@ -69,7 +65,6 @@ const botResponses: ResponseRule[] = [
     ],
   },
 
-  // Navigation - Projects
   {
     keywords: ["project", "work", "portfolio", "showcase", "built", "made", "create"],
     response: "You can find all projects in the Projects section — each card is clickable for full details including images, descriptions, and tech stacks used.",
@@ -85,35 +80,33 @@ const botResponses: ResponseRule[] = [
   },
   {
     keywords: ["full stack", "fullstack", "backend"],
-    response: "Full-stack projects include both frontend and backend work — check those out in the Projects section!",
+    response: "Full-stack projects include both frontend and backend work - check those out in the Projects section!",
   },
 
-  // Navigation - Contact & Email
   {
     keywords: ["contact", "reach", "hire", "message", "connect with", "get in touch"],
     response: "You can reach out directly! Here's the quickest way to connect:",
     links: [
-      { label: "Send Email", url: "mailto:hello@example.com", icon: "mail" },
-      { label: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
+      { label: "Send Email", url: "mailto:an.tubagusp@gmail.com", icon: "mail" },
+      { label: "LinkedIn", url: "https://linkedin.com/in/panji-anugrah", icon: "linkedin" },
     ],
   },
   {
     keywords: ["email", "mail", "e-mail"],
     response: "Here's a direct link to send an email:",
     links: [
-      { label: "Send Email", url: "mailto:hello@example.com", icon: "mail" },
+      { label: "Send Email", url: "mailto:an.tubagusp@gmail.com", icon: "mail" },
     ],
   },
   {
     keywords: ["available", "freelance", "work together", "collaborate", "job", "opportunity"],
     response: "For collaboration or job opportunities, feel free to reach out directly:",
     links: [
-      { label: "Send Email", url: "mailto:hello@example.com", icon: "mail" },
-      { label: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
+      { label: "Send Email", url: "mailto:an.tubagusp@gmail.com", icon: "mail" },
+      { label: "LinkedIn", url: "https://linkedin.com/in/panji-anugrah", icon: "linkedin" },
     ],
   },
 
-  // Navigation - Experience
   {
     keywords: ["experience", "job", "work history", "career", "company", "companies"],
     response: "The Experience section showcases the professional journey with detailed role descriptions and company info. It's right after About!",
@@ -123,7 +116,6 @@ const botResponses: ResponseRule[] = [
     response: "Educational background can be found in the About section. It covers the academic journey and qualifications.",
   },
 
-  // Skills & Tech
   {
     keywords: ["skill", "tech", "stack", "language", "tool", "technology", "technologies"],
     response: "Check out the scrolling marquee in the About section — it shows all technologies, languages, and tools. From React to Python to Flutter!",
@@ -137,46 +129,55 @@ const botResponses: ResponseRule[] = [
     response: "JavaScript and TypeScript are core technologies here — used heavily in React and Node.js projects!",
   },
 
-  // Resume & CV
   {
     keywords: ["resume", "cv", "download"],
     response: "Here's the resume for you to check out:",
     links: [
-      { label: "View Resume", url: "#hero", icon: "resume" },
-    ],
-  },
-
-  // GitHub
-  {
-    keywords: ["github", "code", "source", "repo", "repository"],
-    response: "Want to explore the code? Here's the GitHub profile:",
-    links: [
-      { label: "View GitHub", url: "https://github.com", icon: "github" },
-    ],
-  },
-
-  // LinkedIn
-  {
-    keywords: ["linkedin", "social", "professional", "network"],
-    response: "Let's connect professionally! Here's the LinkedIn profile:",
-    links: [
-      { label: "View LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
-    ],
-  },
-
-  // All social links
-  {
-    keywords: ["link", "social media", "socials", "all links", "profiles"],
-    response: "Here are all the important links you might need:",
-    links: [
-      { label: "GitHub", url: "https://github.com", icon: "github" },
-      { label: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
-      { label: "Email", url: "mailto:hello@example.com", icon: "mail" },
       { label: "Resume", url: "#hero", icon: "resume" },
     ],
   },
 
-  // About
+  {
+    keywords: ["github", "code", "source", "repo", "repository"],
+    response: "Want to explore the code? Here's the GitHub profile:",
+    links: [
+      { label: "GitHub", url: "https://github.com/sslythrrr", icon: "github" },
+    ],
+  },
+
+  {
+    keywords: ["linkedin", "social", "professional", "network"],
+    response: "Let's connect professionally! Here's the LinkedIn profile:",
+    links: [
+      { label: "LinkedIn", url: "https://linkedin.com/in/panji-anugrah", icon: "linkedin" },
+    ],
+  },
+  {
+    keywords: ["instagram", "insta", "photo", "pictures"],
+    response: "For a glimpse behind the scenes, check out the Instagram profile:",
+    links: [
+      { label: "Instagram", url: "https://instagram.com/tubaguspn", icon: "instagram" },
+    ],
+  },
+  {
+    keywords: ["facebook", "fb", "social media"],
+    response: "Connect on Facebook for updates and more:",
+    links: [
+      { label: "Facebook", url: "https://facebook.com/panji.anoegrah", icon: "facebook" },
+    ],
+  }
+  ,
+  {
+    keywords: ["link", "social media", "socials", "all links", "profiles"],
+    response: "Here are all the important links you might need:",
+    links: [
+      { label: "GitHub", url: "https://github.com/sslythrrr", icon: "github" },
+      { label: "LinkedIn", url: "https://linkedin.com/in/panji-anugrah", icon: "linkedin" },
+      { label: "Email", url: "mailto:an.tubagusp@gmail.com", icon: "mail" },
+      { label: "Resume", url: "#hero", icon: "resume" },
+    ],
+  },
+
   {
     keywords: ["about", "who", "background", "story", "introduction"],
     response: "The About section tells the story — scroll down a bit from the hero and you'll find the background, journey, and what drives the work.",
@@ -186,7 +187,6 @@ const botResponses: ResponseRule[] = [
     response: "Location info is in the About section. Feel free to check it out!",
   },
 
-  // Appreciation
   {
     keywords: ["thanks", "thank you", "thx", "appreciate", "helpful", "great"],
     response: [
@@ -203,7 +203,6 @@ const botResponses: ResponseRule[] = [
     ],
   },
 
-  // Farewell
   {
     keywords: ["bye", "goodbye", "see you", "later", "leaving", "gotta go"],
     response: [
@@ -213,7 +212,6 @@ const botResponses: ResponseRule[] = [
     ],
   },
 
-  // Fun / Easter eggs
   {
     keywords: ["joke", "funny", "humor", "laugh"],
     response: [
@@ -231,12 +229,44 @@ const botResponses: ResponseRule[] = [
     response: "I'm Arcturus, your guide here! I can help you navigate. Ask about: projects, skills, experience, contact info, resume, social links, or just chat. What interests you?",
   },
 
-  // Fallback improvements
   {
     keywords: ["?"],
     response: "Good question! Could you be more specific? I can help with projects, skills, experience, or contact info.",
   },
 ];
+
+const parseGroqResponse = (text: string): { text: string; links?: LinkButton[] } => {
+  const linkRegex = /\[LINKS\]([\s\S]*?)\[\/LINKS\]/;
+  const match = text.match(linkRegex);
+
+  if (!match) {
+    return { text: text.trim() };
+  }
+
+  const cleanText = text.replace(linkRegex, '').trim();
+  const linksSection = match[1].trim();
+  
+  const links: LinkButton[] = [];
+  const lines = linksSection.split('\n').filter(line => line.trim());
+
+  for (const line of lines) {
+    const parts = line.split('|').map(p => p.trim());
+    if (parts.length !== 3) continue;
+
+    const label = parts[0].replace(/^label:\s*/i, '').trim();
+    const url = parts[1].replace(/^url:\s*/i, '').trim();
+    const icon = parts[2].replace(/^icon:\s*/i, '').trim() as LinkButton['icon'];
+
+    if (label && url && icon) {
+      links.push({ label, url, icon });
+    }
+  }
+
+  return {
+    text: cleanText,
+    links: links.length > 0 ? links : undefined
+  };
+};
 
 const defaultResponses = [
   "Hmm, I'm not sure about that. Try asking about projects, experience, skills, or contact info!",
@@ -247,14 +277,12 @@ const defaultResponses = [
 const findResponse = (input: string): { text: string; links?: LinkButton[] } => {
   const lowerInput = input.toLowerCase().trim();
 
-  // Check for matches
   for (const item of botResponses) {
     if (item.keywords.some((keyword) => lowerInput.includes(keyword))) {
       const response = Array.isArray(item.response)
         ? item.response[Math.floor(Math.random() * item.response.length)]
         : item.response;
 
-      // Add follow-up if exists
       let finalText = response;
       if (item.followUp && Math.random() > 0.5) {
         finalText = `${response}\n\n${item.followUp}`;
@@ -263,7 +291,6 @@ const findResponse = (input: string): { text: string; links?: LinkButton[] } => 
     }
   }
 
-  // Random default response
   return { text: defaultResponses[Math.floor(Math.random() * defaultResponses.length)] };
 };
 
@@ -273,6 +300,10 @@ const LinkIcon = ({ type }: { type: LinkButton["icon"] }) => {
       return <Github className="w-3.5 h-3.5" />;
     case "linkedin":
       return <Linkedin className="w-3.5 h-3.5" />;
+    case "facebook":
+      return <Facebook className="w-3.5 h-3.5" />;
+    case "instagram":
+      return <Instagram className="w-3.5 h-3.5" />;
     case "mail":
       return <Mail className="w-3.5 h-3.5" />;
     case "resume":
@@ -283,12 +314,12 @@ const LinkIcon = ({ type }: { type: LinkButton["icon"] }) => {
 };
 
 const Chatbot = () => {
-  const [isAIMode, setIsAIMode] = useState(true);
+  //const [isAIMode, setIsAIMode] = useState(true);
   const [apiError, setApiError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hey! I'm Arcturus, your guide to this portfolio. Ask me about projects, skills, experience, or anything else!", isBot: true, timestamp: new Date() },
+    { id: 1, text: "Hey! Let me know if you have any questions.", isBot: true, timestamp: new Date() },
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -326,14 +357,12 @@ const Chatbot = () => {
     const userInput = input;
     setInput("");
 
-    // Simulate sent status
     setTimeout(() => {
       setMessages((prev) =>
         prev.map((m) => (m.id === userMessage.id ? { ...m, status: "sent" as const } : m))
       );
     }, 200);
 
-    // Simulate delivered status
     setTimeout(() => {
       setMessages((prev) =>
         prev.map((m) => (m.id === userMessage.id ? { ...m, status: "delivered" as const } : m))
@@ -341,7 +370,6 @@ const Chatbot = () => {
       setIsTyping(true);
     }, 500);
 
-    // Simulate typing delay with variable timing
     const typingDelay = 1200 + Math.random() * 800;
     setTimeout(async () => {
       // Mark as read
@@ -352,7 +380,6 @@ const Chatbot = () => {
       let botResponse: { text: string; links?: LinkButton[] } | null = null;
       let usedAI = false;
 
-      // 1. PRIMARY: Try Groq API
       try {
         const response = await fetch('/api/chat', {
           method: 'POST',
@@ -367,13 +394,13 @@ const Chatbot = () => {
               }))
           }),
         });
-
         if (response.ok) {
           const data = await response.json();
 
           if (!data.fallback && data.response) {
-            // Success! Use Groq response
-            botResponse = { text: data.response };
+            // Parse links dari respons Groq
+            const parsedResponse = parseGroqResponse(data.response);
+            botResponse = parsedResponse;
             usedAI = true;
             setApiError(false);
           }
@@ -382,14 +409,12 @@ const Chatbot = () => {
         console.log('Groq API error, falling back to rule-based:', error);
       }
 
-      // 2. FALLBACK: If Groq failed, use rule-based
       if (!botResponse) {
         console.log('Using rule-based fallback');
         setApiError(true);
         botResponse = findResponse(userInput);
       }
 
-      // 3. Create and add bot message
       const botMessage: Message = {
         id: Date.now() + 1,
         text: botResponse.text,
@@ -466,11 +491,11 @@ const Chatbot = () => {
             >
               <div className="flex items-center gap-2">
                 <GripVertical className="w-4 h-4 text-foreground/30" />
-                <div className="w-2 h-2 rounded-full bg-primary/60 animate-pulse" />
-                {apiError && (
-                  <span className="text-[10px] text-foreground/40">(offline mode)</span>
-                )}
+                <div className="w-2 h-2 rounded-full bg-white/80 animate-pulse" />
                 <span className="text-sm font-medium tracking-wide text-foreground/90">Arcturus</span>
+                {apiError && (
+                  <span className="text-[10px] text-foreground/40">(offline)</span>
+                )}
               </div>
               <div className="flex items-center gap-1">
                 <button
@@ -634,7 +659,7 @@ const Chatbot = () => {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       onKeyDown={handleKeyDown}
-                      placeholder="Ask Arcturus anything..."
+                      placeholder="Ask anything..."
                       className="flex-1 bg-background/50 border border-border/20 rounded-lg px-3 py-2 text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-border/40 transition-colors"
                     />
                     <motion.button
