@@ -486,17 +486,20 @@ const Projects = () => {
                           >
                             {project.images && project.images.length > 0 ? (
                               <>
+                                {/* Blurred background image for depth */}
                                 <img
                                   src={project.images[0]}
                                   alt={project.title + " blurred background"}
                                   className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg opacity-50 pointer-events-none select-none"
                                   aria-hidden="true"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/100 to-background/100 opacity-90 pointer-events-none select-none" />
+                                {/* Uniform dark overlay for all */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-[#18181b]/100 to-black/90 opacity-100 pointer-events-none select-none" />
+                                {/* Main image centered, fit contain, with shadow */}
                                 <img
                                   src={project.images[0]}
                                   alt={project.title + " thumbnail"}
-                                  className="relative z-10 max-h-[95%] max-w-[90%] object-contain rounded-md shadow-lg border border-white/10 bg-white/5"
+                                  className="relative z-10 max-h-[95%] max-w-[90%] object-contain rounded-md shadow-lg border bg-white/5"
                                   loading="lazy"
                                   decoding="async"
                                 />
