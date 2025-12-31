@@ -456,94 +456,91 @@ const Projects = () => {
           >
             <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
               <div className="flex">
-                <AnimatePresence mode="popLayout">
-                  {filteredProjects.map((project, index) => (
-                    <motion.div
-                      key={project.id}
-                      className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] pr-4"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3, delay: index * 0.03 }}
-                      layout
-                    >
-                      <button
-                        onClick={() => openProjectModal(project)}
-                        className="w-full text-left group"
-                      >
-                        <article className="bg-card border border-secondary/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:translate-y-[-2px] relative border-chase-container">
-                          {/* Border animation overlay */}
-                          {isInView && (
-                            <>
-                              <span className="border-runner" style={{ animationDelay: `${index * 80}ms` }} />
-                              <span className="border-runner" style={{ animationDelay: `${index * 80}ms` }} />
-                            </>
-                          )}
 
-                          {/* Thumbnail - consistent dark gradient, always blurry bg, centered image */}
-                          <div
-                            className={`aspect-[4/2.5] bg-gradient-to-br ${getProjectGradient()} relative overflow-hidden flex items-center justify-center`}
-                          >
-                            {project.images && project.images.length > 0 ? (
-                              <>
-                                {/* Blurred background image for depth */}
-                                <img
-                                  src={project.images[0]}
-                                  alt={project.title + " blurred background"}
-                                  className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg opacity-50 pointer-events-none select-none"
-                                  aria-hidden="true"
-                                />
-                                {/* Uniform dark overlay for all */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-[#18181b]/100 to-black/90 opacity-100 pointer-events-none select-none" />
-                                {/* Main image centered, fit contain, with shadow */}
-                                <img
-                                  src={project.images[0]}
-                                  alt={project.title + " thumbnail"}
-                                  className="relative z-10 max-h-[95%] max-w-[90%] object-contain rounded-md shadow-lg border bg-white/5"
-                                  loading="lazy"
-                                  decoding="async"
-                                />
-                              </>
-                            ) : (
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-lg font-display font-semibold text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300">
-                                  {project.title.split(" ")[0]}
-                                </span>
-                              </div>
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[350px] pr-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <button
+                      onClick={() => openProjectModal(project)}
+                      className="w-full text-left group"
+                    >
+                      <article className="bg-card border border-secondary/50 rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:translate-y-[-2px] relative border-chase-container">
+                        {/* Border animation overlay */}
+                        {isInView && (
+                          <>
+                            <span className="border-runner" style={{ animationDelay: `${index * 80}ms` }} />
+                            <span className="border-runner" style={{ animationDelay: `${index * 80}ms` }} />
+                          </>
+                        )}
+
+                        {/* Thumbnail - consistent dark gradient, always blurry bg, centered image */}
+                        <div
+                          className={`aspect-[4/2.5] bg-gradient-to-br ${getProjectGradient()} relative overflow-hidden flex items-center justify-center`}
+                        >
+                          {project.images && project.images.length > 0 ? (
+                            <>
+                              {/* Blurred background image for depth */}
+                              <img
+                                src={project.images[0]}
+                                alt={project.title + " blurred background"}
+                                className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg opacity-50 pointer-events-none select-none"
+                                aria-hidden="true"
+                              />
+                              {/* Uniform dark overlay for all */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-[#18181b]/100 to-black/90 opacity-100 pointer-events-none select-none" />
+                              {/* Main image centered, fit contain, with shadow */}
+                              <img
+                                src={project.images[0]}
+                                alt={project.title + " thumbnail"}
+                                className="relative z-10 max-h-[95%] max-w-[90%] object-contain rounded-md shadow-lg border bg-white/5"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </>
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-lg font-display font-semibold text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300">
+                                {project.title.split(" ")[0]}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Compact Content */}
+                        <div className="p-4">
+                          <h3 className="text-sm font-display font-semibold leading-tight mb-1 group-hover:text-foreground transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-xs text-muted-foreground mb-2">
+                            {project.period}
+                          </p>
+                          {/* Description */}
+                          <p className="text-xs text-foreground/70 mb-2 line-clamp-2 min-h-[2.5em]">
+                            {project.description}
+                          </p>
+                          {/* Skill Tags */}
+                          <div className="flex flex-wrap gap-1">
+                            {project.tags.slice(0, 3).map((tag) => (
+                              <span key={tag} className="px-1.5 py-0.5 text-[10px] bg-foreground/5 text-foreground/50 rounded">
+                                {tag}
+                              </span>
+                            ))}
+                            {project.tags.length > 3 && (
+                              <span className="px-1.5 py-0.5 text-[10px] text-foreground/30">
+                                +{project.tags.length - 3}
+                              </span>
                             )}
                           </div>
-
-                          {/* Compact Content */}
-                          <div className="p-4">
-                            <h3 className="text-sm font-display font-semibold leading-tight mb-1 group-hover:text-foreground transition-colors">
-                              {project.title}
-                            </h3>
-                            <p className="text-xs text-muted-foreground mb-2">
-                              {project.period}
-                            </p>
-                            {/* Description */}
-                            <p className="text-xs text-foreground/70 mb-2 line-clamp-2 min-h-[2.5em]">
-                              {project.description}
-                            </p>
-                            {/* Skill Tags */}
-                            <div className="flex flex-wrap gap-1">
-                              {project.tags.slice(0, 3).map((tag) => (
-                                <span key={tag} className="px-1.5 py-0.5 text-[10px] bg-foreground/5 text-foreground/50 rounded">
-                                  {tag}
-                                </span>
-                              ))}
-                              {project.tags.length > 3 && (
-                                <span className="px-1.5 py-0.5 text-[10px] text-foreground/30">
-                                  +{project.tags.length - 3}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </article>
-                      </button>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                        </div>
+                      </article>
+                    </button>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </motion.div>
