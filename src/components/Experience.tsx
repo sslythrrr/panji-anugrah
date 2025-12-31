@@ -26,7 +26,7 @@ const experiences = [
     duration: "4 months",
     location: "Bogor Regency, West Java, Indonesia · Hybrid",
     description: [
-      "Participated in KKN Tematik (Student Community Service) \"Membangun Desa\" program at Desa Tegal, Kecamatan Kemang.",
+      "Participated in Student Community Service (KKN Tematik) program at Desa Tegal, Kecamatan Kemang.",
       "Conducted field observations and stakeholder interviews with Village Secretary",
       "Designed and developed Village Information System to digitalize public services",
       "Built monolithic full-stack application using Node.js, Express.js, and MySQL",

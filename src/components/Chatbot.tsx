@@ -167,6 +167,14 @@ const botResponses: ResponseRule[] = [
     ],
   }
   ,
+    {
+    keywords: ["portfolio", "showcase"],
+    response: "This is it:",
+    links: [
+      { label: "", url: "https://panjianugrah.me/#projects", icon: "external" },
+    ],
+  }
+  ,
   {
     keywords: ["link", "social media", "socials", "all links", "profiles"],
     response: "Here are all the important links you might need:",
@@ -479,7 +487,7 @@ const Chatbot = () => {
             }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-            className="fixed bottom-6 right-6 z-50 w-80 bg-background/95 backdrop-blur-md border border-border/30 rounded-2xl overflow-hidden flex flex-col"
+            className="fixed bottom-6 right-6 z-50 w-80 bg-background/95 backdrop-blur-sm border border-border/30 rounded-2xl overflow-hidden flex flex-col"
             style={{
               boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03)",
             }}

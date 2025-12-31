@@ -7,17 +7,41 @@ import ProjectModal from "./ProjectModal";
 const projects = [
   {
     id: 1,
+    title: "Noteturne",
+    period: "Nov 2025 - Dec 2025",
+    categories: ["Mobile"],
+    description:
+      "Android note app with custom Enigma-inspired encryption using unique seed-based cipher for secure storage and cross-device sharing via QR or file export",
+    highlights: [
+      "Built custom Enigma-inspired cipher with 5 rotors and hex encoding to handle Unicode text",
+      "Designed seed-based encryption ensuring consistent decryption when notes are shared across devices",
+      "Implemented QR code and file-based sharing system for encrypted note transfer between users",
+    ],
+    tags: ["Kotlin", "Android", "Jetpack Compose", "Cryptography"],
+    github: "https://github.com/sslythrrr/",
+    images: [
+      "/project/noteturne/1.webp",
+      "/project/noteturne/2.webp",
+      "/project/noteturne/3.webp",
+      "/project/noteturne/4.webp",
+      "/project/noteturne/5.webp",
+      "/project/noteturne/6.webp",
+      "/project/noteturne/7.webp",
+    ],
+  }
+  , {
+    id: 2,
     title: "Smart Gallery",
     period: "Mar 2025 - Jul 2025",
-    categories: ["Mobile", "Machine Learning"],
+    categories: ["Mobile", "Deep Learning"],
     description:
       "Android gallery app with advanced NLP search and computer vision capabilities for intelligent photo management.",
     highlights: [
-      "Fine-tuned three separate IndoBERT models for Intent Classification, NER, and Semantic Similarity",
+      "Fine-tuned three separate DistilBERT models for Intent Classification, NER, and Semantic Similarity",
       "Integrated MobileNetV3 for multi-label classification and ML Kit for OCR-based retrieval",
       "Architected system to run quantized models locally using TensorFlow Lite",
     ],
-    tags: ["Kotlin", "Android", "NLP", "IndoBERT", "MobileNetV3", "Computer Vision", "TFLite", "Jetpack Compose"],
+    tags: ["Kotlin", "Android", "NLP", "DistilBERT", "MobileNetV3", "Computer Vision", "TFLite", "Jetpack Compose"],
     github: "https://github.com/sslythrrr/smart-gallery",
     images: [
       "/project/smart-gallery/1.webp",
@@ -27,10 +51,36 @@ const projects = [
     ],
   },
   {
-    id: 2,
-    title: "Time-Series Forecasting",
+    id: 3,
+    title: "Inventory Management System",
+    period: "Nov 2024 - Apr 2025",
+    categories: ["Web", "Deep Learning"],
+    description:
+      "A smart inventory management platform featuring an integrated NLP chatbot for search and a dynamic auction system for stock optimization.",
+    highlights: [
+      "Integrated IndoBERT Intent and NER model for chatbot to handle natural language queries and automate user support",
+      "Multi-role access system with distinct operational dashboards",
+      "Developed real-time auction module as determined by Admin and approval from Supervisor",
+      "Built real-time dashboards to visualize inventory status",
+      "Manage and print report documents in XLSX format",
+    ],
+    tags: ["Node.js", "Express.js", "MySQL", "NLP", "IndoBERT", "TensorFlow.js"],
+    github: "https://github.com/sslythrrr/inventas-inventory-management",
+    images: [
+      "/project/inventas/1.webp",
+      "/project/inventas/2.webp",
+      "/project/inventas/3.webp",
+      "/project/inventas/4.webp",
+      "/project/inventas/5.webp",
+      "/project/inventas/6.webp",
+      "/project/inventas/7.webp",
+    ],
+  },
+  {
+    id: 4,
+    title: "Steam Genre & Retention Forecasting",
     period: "Dec 2024 - Jan 2025",
-    categories: ["Data Science", "Machine Learning"],
+    categories: ["Data Science"],
     description:
       "Comprehensive analysis of 14,213 Steam games to forecast market trends and player retention patterns.",
     highlights: [
@@ -46,7 +96,7 @@ const projects = [
     ],
   },
   {
-    id: 3,
+    id: 5,
     title: "Monfori Lens",
     period: "Aug 2024 - Sep 2024",
     categories: ["Mobile"],
@@ -67,7 +117,26 @@ const projects = [
     ],
   },
   {
-    id: 4,
+    id: 6,
+    title: "Employee Management Dashboard",
+    period: "Jul 2024 - Aug 2024",
+    categories: ["Web"],
+    description:
+      "Internal HR dashboard for company announcements and division-based task management with proof submission.",
+    highlights: [
+      "Implemented role-based access control with division-specific task visibility",
+      "Built task assignment system for HR with employee proof submission",
+      "Developed announcement broadcasting system for company-wide updates",
+    ],
+    tags: ["Node.js", "Express.js", "MySQL"],
+    github: "https://github.com/sslythrrr/employee-management-dashboard",
+    images: [
+      "/project/announcement-hotel/1.webp",
+    ],
+  }
+  ,
+  {
+    id: 7,
     title: "Village Information System",
     period: "Apr 2024 - Jul 2024",
     categories: ["Web"],
@@ -75,20 +144,44 @@ const projects = [
       "Centralized village information system for administrative workflow digitalization.",
     highlights: [
       "Built monolithic full-stack application with Node.js and Express.js",
-      "Integrated MySQL for population data management",
+      "Admin panel with CRUD operations for village services",
       "Delivered platform for Desa Tegal, Kecamatan Kemang",
     ],
     tags: ["Node.js", "Express.js", "MySQL"],
     github: "https://github.com/sslythrrr/village-information-system",
     images: [
       "/project/village-system/1.webp",
+      "/project/village-system/2.webp",
+      "/project/village-system/3.webp",
+      "/project/village-system/4.webp",
+      "/project/village-system/5.webp",
+      "/project/village-system/6.webp",
+      "/project/village-system/7.webp",
     ],
   },
   {
-    id: 5,
+    id: 8,
+    title: "Promethee Infrastructure",
+    period: "Jun 2024 - Jul 2024",
+    categories: ["Web", "Decision Support System"],
+    description:
+      "Web-based village infrastructure decision support system using PROMETHEE II multi-criteria analysis.",
+    highlights: [
+      "Interactive alternative comparison with dynamic criteria weighting",
+      "Promethee II algorithm implementation in JavaScript",
+      "Visible results with clear ranking and net flow scores",
+    ],
+    tags: ["Decision Support System", "Python", "Promethee II", "Flask", "JavaScript"],
+    github: "https://github.com/sslythrrr/PROMETHEE-infrastructure-prioritization",
+    images: [
+      "/project/promethee-pembangunan/1.webp",
+    ],
+  },
+  {
+    id: 9,
     title: "Smartphone Recommendation",
     period: "May 2024 - Jun 2024",
-    categories: ["Web", "Machine Learning"],
+    categories: ["Web", "Decision Support System"],
     description:
       "Web-based recommendation engine combining unsupervised learning with multi-criteria decision making.",
     highlights: [
@@ -96,15 +189,15 @@ const projects = [
       "AHP for subjective preference ranking",
       "Interactive Flask web interface",
     ],
-    tags: ["Python", "Flask", "K-Means", "AHP", "Machine Learning"],
+    tags: ["Decision Support System", "Python", "Flask", "K-Means", "AHP"],
     github: "https://github.com/sslythrrr/AHP-clustering-smartphone",
     images: [
       "/project/smartphone-recommendation/1.webp",
     ],
   },
   {
-    id: 6,
-    title: "System Dynamics Modeling",
+    id: 10,
+    title: "System Dynamics: Indonesia Fuel Projection",
     period: "Nov 2023 - Jan 2024",
     categories: ["Data Science", "Dynamic Simulation"],
     description:
@@ -122,16 +215,16 @@ const projects = [
     ],
   },
   {
-    id: 7,
-    title: "ETL Pipeline - Steam",
-    period: "Apr 2023 - May 2023",
+    id: 11,
+    title: "Steam ETL & Analysis",
+    period: "Mar 2023 - May 2023",
     categories: ["Data Engineering", "Data Science"],
     description:
-      "High-concurrency scraping engine harvesting real-time metrics from 100,000+ Steam applications.",
+      "End-to-end data engineering solution designed to harvest and analyze real-time gaming metrics, transforming raw Steam data into actionable market insights.",
     highlights: [
-      "Asynchronous crawler with 60 concurrent requests",
-      "Pareto-based filtering for Top 5000 games (99% coverage)",
-      "Reduced processing overhead by 90%",
+      "Built a high-concurrency asynchronous crawler (Python/Aiohttp) handling 60+ simultaneous requests",
+      "Processed daily player metrics to identify viral trends and retention rates for top titles",
+      "Implemented Pareto-based filtering to optimize data processing, capturing 99% of the active player base",
     ],
     tags: ["Python", "Aiohttp", "AsyncIO", "ETL", "Pandas", "Web Scraping"],
     github: "https://github.com/sslythrrr/steam-games-analysis",
@@ -139,9 +232,42 @@ const projects = [
       "/project/etl-pipeline/1.webp",
     ],
   },
+  {
+    id: 12,
+    title: "Store it!",
+    period: "Dec 2022 - Jan 2023",
+    categories: ["Desktop"],
+    description:
+      "Desktop based simple inventory management application.",
+    highlights: [
+      "CRUD operations for inventory items",
+      "Search and summary dashboard features",
+    ],
+    tags: ["Flutter", "MySQL"],
+    github: "https://github.com/sslythrrr/inventory-management-flutter",
+    images: [
+      "/project/storeit/1.webp",
+      "/project/storeit/2.webp",
+      "/project/storeit/3.webp",
+      "/project/storeit/4.webp",
+      "/project/storeit/5.webp",
+      "/project/storeit/6.webp",
+      "/project/storeit/7.webp",
+    ],
+  },
 ];
 
-const allCategories = ["All", "Mobile", "Data Science", "Data Engineering", "Web", "Dynamic Simulation", "Machine Learning"];
+const allCategories = [
+  "All",
+  "Mobile",
+  "Web",
+  "Desktop",
+  "Data Science",
+  "Data Engineering",
+  "Deep Learning",
+  "Decision Support System",
+  "Dynamic Simulation"
+];
 
 
 // Consistent dark gradient for all thumbnails
@@ -360,16 +486,13 @@ const Projects = () => {
                           >
                             {project.images && project.images.length > 0 ? (
                               <>
-                                {/* Blurred background image for depth */}
                                 <img
                                   src={project.images[0]}
                                   alt={project.title + " blurred background"}
                                   className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg opacity-50 pointer-events-none select-none"
                                   aria-hidden="true"
                                 />
-                                {/* Uniform dark overlay for all */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-[#18181b]/100 to-black/90 opacity-100 pointer-events-none select-none" />
-                                {/* Main image centered, fit contain, with shadow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/100 to-background/100 opacity-90 pointer-events-none select-none" />
                                 <img
                                   src={project.images[0]}
                                   alt={project.title + " thumbnail"}

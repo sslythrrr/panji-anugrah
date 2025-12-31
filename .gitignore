@@ -27,5 +27,9 @@ dist-ssr
 *.sln
 *.sw?
 
+/tes/
+/hasil/
+cp.cjs
+
 .vercel
 .env*.local

@@ -259,7 +259,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                       {/* Links */}
                       <div className="flex gap-3 flex-wrap">
                         {(project.categories.includes("Mobile") || 
-                          (project.categories.includes("Web"))) ? (
+                          (project.categories.includes("Web")) || (project.categories.includes("Desktop"))) ? (
                           <>
                             <a
                               href={project.github}
@@ -412,7 +412,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   {/* Links */}
                   <div className="flex gap-3 flex-wrap">
                     {(project.categories.includes("Mobile") || 
-                      (project.categories.includes("Web"))) ? (
+                          (project.categories.includes("Web")) || (project.categories.includes("Desktop"))) ? (
                       <>
                         <a
                           href={project.github}

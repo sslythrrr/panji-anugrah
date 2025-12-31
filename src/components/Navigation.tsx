@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -105,18 +106,10 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo/Icon + Name (statis) 
-            <div className="flex items-center">
-              <div className="relative w-8 h-8 md:w-14 md:h-14">
-                <img
-                  src="/icon.png"
-                  alt="Logo Icon"
-                  className="w-full h-full object-contain"
-                  style={{ display: 'block' }}
-                />
-              </div>
-            </div>*/}
-
+            {/* Theme Toggle - Pojok Kiri Banget */}
+            <div className="hidden md:block absolute left-6 md:left-12">
+              <ThemeToggle />
+            </div>
             {/* Mobile Menu Button interaktif */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -177,9 +170,9 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
                     key={item.label}
                     onClick={() => handleNavClick(item.href)}
                     className={`text-left text-xl font-display font-semibold py-3 transition-colors hoverable ${(activeSection === item.href.slice(1)) ||
-                        (item.href === "#hero" && activeSection === "")
-                        ? "text-foreground"
-                        : "text-foreground hover:text-accent"
+                      (item.href === "#hero" && activeSection === "")
+                      ? "text-foreground"
+                      : "text-foreground hover:text-accent"
                       }`}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -188,6 +181,10 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
                     {item.label}
                   </motion.button>
                 ))}
+                {/* Theme Toggle di mobile menu */}
+                <div className="mt-4 pt-4 border-t border-border">
+                  <ThemeToggle isMobile />
+                </div>
               </div>
             </motion.div>
           </motion.div>

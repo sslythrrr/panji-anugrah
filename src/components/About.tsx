@@ -58,7 +58,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" ref={containerRef}>
+    <section id="about" className="pt-8 pb-12 md:pt-12 md:pb-18 px-6 md: mt-16" ref={containerRef}>
       <motion.div
         className="max-w-5xl mx-auto"
         ref={ref}

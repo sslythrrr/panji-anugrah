@@ -6,13 +6,16 @@
 
 @layer base {
   :root {
-    /* silverblade*/
+    --radius: 0.5rem;
+  }
+
+  /* DARK THEME (Default) */
+  :root,
+  .dark {
+    /* silverblade */
     --background: 200 20% 3%;
-    /* #080a0d - pure obsidian black */
     --background-secondary: 200 18% 6%;
-    /* #0f1215 - deep stone */
     --foreground: 0 0% 96%;
-    /* #f5f5f5 - soft white */
 
     --card: 200 18% 6%;
     --card-foreground: 0 0% 96%;
@@ -24,15 +27,12 @@
     --primary-foreground: 200 20% 3%;
 
     --secondary: 210 10% 20%;
-    /* #30343a - iron gray */
     --secondary-foreground: 0 0% 96%;
 
     --muted: 210 10% 20%;
     --muted-foreground: 210 8% 48%;
-    /* #757a82 - muted steel */
 
     --accent: 210 15% 70%;
-    /* #adb5bd - polished silver */
     --accent-foreground: 200 20% 3%;
 
     --destructive: 0 70% 50%;
@@ -42,18 +42,13 @@
     --input: 200 15% 12%;
     --ring: 210 15% 70%;
 
-    --radius: 0.5rem;
-
     /* Custom Design Tokens - Silver Blade */
     --glow-silver: 0 0 30px hsla(210, 15%, 70%, 0.25);
     --glow-steel: 0 0 25px hsla(210, 20%, 80%, 0.2);
     --gradient-dark: linear-gradient(135deg, hsl(200, 20%, 3%) 0%, hsl(210, 15%, 5%) 50%, hsl(200, 20%, 3%) 100%);
     --blade-shine: 210 20% 85%;
-    /* #d3dae3 - bright blade edge */
     --dark-steel: 210 12% 40%;
-    /* #5d646e - forged steel */
     --iron-core: 210 8% 30%;
-    /* #474c54 - iron base */
 
     /* Sidebar vars */
     --sidebar-background: 200 20% 4%;
@@ -66,9 +61,53 @@
     --sidebar-ring: 210 15% 70%;
   }
 
-  .dark {
-    --background: 200 20% 3%;
-    --foreground: 0 0% 96%;
+  /* LIGHT THEME */
+  .light {
+    /* Pearl Gray Theme */
+    --background: 210 17% 98%;
+    --background-secondary: 210 16% 93%;
+    --foreground: 210 11% 15%;
+
+    --card: 210 16% 93%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 210 17% 99%;
+    --popover-foreground: 210 11% 15%;
+
+    --primary: 210 11% 15%;
+    --primary-foreground: 210 17% 98%;
+
+    --secondary: 210 14% 83%;
+    --secondary-foreground: 210 11% 15%;
+
+    --muted: 210 14% 83%;
+    --muted-foreground: 210 9% 31%;
+
+    --accent: 211 18% 43%;
+    --accent-foreground: 210 17% 98%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 17% 98%;
+
+    --border: 210 14% 89%;
+    --input: 210 14% 89%;
+    --ring: 211 18% 43%;
+
+    /* Custom Design Tokens - Pearl Elegance */
+    --glow-steel: 0 0 25px hsla(211, 18%, 43%, 0.15);
+    --glow-pearl: 0 0 20px hsla(210, 17%, 98%, 0.3);
+    --gradient-light: linear-gradient(135deg, hsl(210, 17%, 98%) 0%, hsl(210, 16%, 95%) 50%, hsl(210, 16%, 93%) 100%);
+    --steel-blue: 211 25% 50%;
+
+    /* Sidebar vars */
+    --sidebar-background: 210 17% 99%;
+    --sidebar-foreground: 210 11% 15%;
+    --sidebar-primary: 210 11% 15%;
+    --sidebar-primary-foreground: 210 17% 98%;
+    --sidebar-accent: 210 14% 83%;
+    --sidebar-accent-foreground: 210 11% 15%;
+    --sidebar-border: 210 14% 89%;
+    --sidebar-ring: 211 18% 43%;
   }
 }
 
@@ -104,20 +143,24 @@
     }
   }
 
-  /* Selection styling - Silver Gleam */
-  ::selection {
+  /* Selection styling */
+  .dark ::selection {
     @apply bg-accent/20 text-foreground;
+  }
+
+  .light ::selection {
+    @apply bg-accent/15 text-foreground;
   }
 }
 
 @layer components {
 
-  /* Hero Link Underline - Blade Slash */
+  /* Hero Link Underline */
   .link-underline-hero {
     @apply relative;
   }
 
-  .link-underline-hero::after {
+  .dark .link-underline-hero::after {
     content: '';
     @apply absolute left-0 transition-opacity duration-300;
     bottom: 0.15em;
@@ -133,13 +176,34 @@
     transform: translateX(-100%);
   }
 
-  .group:hover .link-underline-hero::after {
+  .light .link-underline-hero::after {
+    content: '';
+    @apply absolute left-0 transition-opacity duration-300;
+    bottom: 0.15em;
+    height: 1.5px;
+    width: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(211, 18%, 43%) 20%,
+        hsl(211, 25%, 50%) 50%,
+        hsl(211, 18%, 43%) 80%,
+        transparent 100%);
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .dark .group:hover .link-underline-hero::after {
     opacity: 0.7;
     animation: wave-underline 1.5s ease-in-out infinite;
   }
 
-  /* Gradient Text Animation - Steel Shimmer */
-  .gradient-text {
+  .light .group:hover .link-underline-hero::after {
+    opacity: 0.5;
+    animation: wave-underline 1.5s ease-in-out infinite;
+  }
+
+  /* Gradient Text Animation */
+  .dark .gradient-text {
     background: linear-gradient(135deg,
         hsl(0, 0%, 96%) 0%,
         hsl(210, 15%, 70%) 25%,
@@ -153,15 +217,35 @@
     animation: gradient-shift 6s ease infinite;
   }
 
+  .light .gradient-text {
+    background: linear-gradient(135deg,
+        hsl(210, 11%, 15%) 0%,
+        hsl(211, 18%, 43%) 25%,
+        hsl(211, 25%, 50%) 50%,
+        hsl(211, 18%, 43%) 75%,
+        hsl(210, 11%, 15%) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease infinite;
+  }
+
   /* Magnetic Button Base */
   .magnetic-btn {
     @apply relative overflow-hidden transition-all duration-300;
   }
 
-  .magnetic-btn::before {
+  .dark .magnetic-btn::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-300;
     background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--accent) / 0.12) 0%, transparent 50%);
+  }
+
+  .light .magnetic-btn::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--accent) / 0.08) 0%, transparent 50%);
   }
 
   .magnetic-btn:hover::before {
@@ -182,22 +266,33 @@
     @apply scale-x-100;
   }
 
-  /* Glass Effect - Metallic Blur */
-  .glass {
-    @apply bg-background/92 backdrop-blur-xl;
+  /* Glass Effect */
+  .dark .glass {
+    background-color: hsl(var(--background) / 0.92);
+    @apply backdrop-blur-xl;
   }
 
-  /* Card Hover Effect - Silver Glow */
+  .light .glass {
+    background-color: hsl(var(--background) / 0.80);
+    @apply backdrop-blur-xl;
+  }
+
+  /* Card Hover Effect */
   .card-hover {
     @apply transition-all duration-500 ease-out;
   }
 
-  .card-hover:hover {
+  .dark .card-hover:hover {
     @apply -translate-y-2;
     box-shadow: var(--glow-silver);
   }
 
-  /* Tech Tag - Forged Metal */
+  .light .card-hover:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--glow-steel);
+  }
+
+  /* Tech Tag */
   .tech-tag {
     @apply px-3 py-1 text-xs font-medium rounded-full bg-secondary text-foreground/80 transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105;
   }
@@ -221,14 +316,25 @@
     @apply relative;
   }
 
-  .border-chase-container::before,
-  .border-chase-container::after {
+  .dark .border-chase-container::before,
+  .dark .border-chase-container::after {
     content: '';
     @apply absolute inset-0 rounded-lg pointer-events-none;
     border: 1px solid;
     border-image: linear-gradient(135deg,
         hsl(210, 15%, 70%),
         hsl(210, 20%, 85%)) 1;
+    opacity: 0;
+  }
+
+  .light .border-chase-container::before,
+  .light .border-chase-container::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg pointer-events-none;
+    border: 2px solid;
+    border-image: linear-gradient(135deg,
+        hsl(211, 18%, 43%),
+        hsl(211, 25%, 50%)) 1;
     opacity: 0;
   }
 
@@ -291,25 +397,19 @@
 
 /* Keyframe Animations */
 @keyframes gradient-shift {
-
-  0%,
-  100% {
+  0%, 100% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
 }
 
 @keyframes bounce-subtle {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
     opacity: 1;
   }
-
   50% {
     transform: translateY(8px);
     opacity: 0.6;
@@ -321,7 +421,6 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -333,7 +432,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-
   to {
     opacity: 0;
     transform: translateY(20px);
@@ -345,7 +443,6 @@
     opacity: 0;
     transform: scale(0.95);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
@@ -353,26 +450,31 @@
 }
 
 @keyframes float {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
-
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-glow {
-
-  0%,
-  100% {
+  0%, 100% {
     box-shadow: 0 0 20px hsla(210, 15%, 70%, 0.2);
   }
-
   50% {
     box-shadow: 0 0 30px hsla(210, 15%, 70%, 0.35);
+  }
+}
+
+.light {
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px hsla(211, 18%, 43%, 0.12);
+    }
+    50% {
+      box-shadow: 0 0 25px hsla(211, 18%, 43%, 0.2);
+    }
   }
 }
 
@@ -381,7 +483,6 @@
     opacity: 0;
     transform: translateX(100%);
   }
-
   to {
     opacity: 1;
     transform: translateX(0);
@@ -392,7 +493,6 @@
   from {
     height: 0;
   }
-
   to {
     height: 100%;
   }
@@ -402,7 +502,6 @@
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(-50%);
   }
@@ -413,18 +512,34 @@
     transform: translateX(-100%);
     opacity: 0;
   }
-
   20% {
     opacity: 0.7;
   }
-
   80% {
     opacity: 0.7;
   }
-
   100% {
     transform: translateX(100%);
     opacity: 0;
+  }
+}
+
+.light {
+  @keyframes wave-underline {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.5;
+    }
+    80% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
   }
 }
 
@@ -433,42 +548,54 @@
     transform: translateX(100%);
     opacity: 0;
   }
-
   20% {
     opacity: 0.7;
   }
-
   80% {
     opacity: 0.7;
   }
-
   100% {
     transform: translateX(-100%);
     opacity: 0;
   }
 }
 
-@keyframes border-chase{
+.light {
+  @keyframes wave-underline2 {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.5;
+    }
+    80% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes border-chase {
   0% {
     clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
     border-width: 1px;
   }
-
   25% {
     clip-path: polygon(0 100%, 100% 100%, 100% 100%, 100% 100%);
     border-width: 1px;
   }
-
   50% {
     clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
     border-width: 1px;
   }
-
   75% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     border-width: 1px;
   }
-
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     opacity: 0;
@@ -495,69 +622,119 @@
       transparent 100%);
 }
 
-/* Border Runner Animation - Silver Blade Flash */
-@keyframes border-run {
-  0% {
-    width: 0;
-    height: 0;
-    bottom: 0;
-    right: 0;
-    border-bottom: 1px solid hsl(210, 15%, 70%);
-    border-left: none;
-    border-top: none;
-    border-right: none;
+/* Border Runner Animation - Dark Theme */
+.dark {
+  @keyframes border-run {
+    0% {
+      width: 0;
+      height: 0;
+      bottom: 0;
+      right: 0;
+      border-bottom: 1px solid hsl(210, 15%, 70%);
+      border-left: none;
+      border-top: none;
+      border-right: none;
+    }
+    25% {
+      width: 100%;
+      height: 0;
+      bottom: 0;
+      right: 0;
+      border-bottom: 1px solid hsl(210, 15%, 70%);
+      border-left: 1px solid hsl(210, 15%, 70%);
+      border-top: none;
+      border-right: none;
+    }
+    50% {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-bottom: 1px solid hsl(210, 20%, 85%);
+      border-left: 1px solid hsl(210, 20%, 85%);
+      border-top: 1px solid hsl(210, 20%, 85%);
+      border-right: none;
+    }
+    75% {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-right: none;
+      border-bottom: 1px solid hsl(210, 15%, 70%);
+      border-left: 1px solid hsl(210, 15%, 70%);
+      border-top: 1px solid hsl(210, 15%, 70%);
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      border-right: none;
+      border-bottom: 1px solid hsl(210, 18%, 75%);
+      border-left: 1px solid hsl(210, 18%, 75%);
+      border-top: 1px solid hsl(210, 18%, 75%);
+    }
   }
+}
 
-  25% {
-    width: 100%;
-    height: 0;
-    bottom: 0;
-    right: 0;
-    border-bottom: 1px solid hsl(210, 15%, 70%);
-    border-left: 1px solid hsl(210, 15%, 70%);
-    border-top: none;
-    border-right: none;
-  }
-
-  50% {
-    width: 100%;
-    height: 100%;
-    bottom: 0;
-    right: 0;
-    border-bottom: 1px solid hsl(210, 20%, 85%); 
-    border-left: 1px solid hsl(210, 20%, 85%);
-    border-top: 1px solid hsl(210, 20%, 85%);
-    border-right: none;
-  }
-
-  75% {
-    width: 100%;
-    height: 100%;
-    bottom: 0;
-    right: 0;
-    border-right: none;
-    border-bottom: 1px solid hsl(210, 15%, 70%);
-    border-left: 1px solid hsl(210, 15%, 70%);
-    border-top: 1px solid hsl(210, 15%, 70%);
-  }
-
-  100% {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    border-right: none;
-    border-bottom: 1px solid hsl(210, 18%, 75%);
-    border-left: 1px solid hsl(210, 18%, 75%);
-    border-top: 1px solid hsl(210, 18%, 75%);
+/* Border Runner Animation - Light Theme */
+.light {
+  @keyframes border-run {
+    0% {
+      width: 0;
+      height: 0;
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid hsl(211, 18%, 43%);
+      border-left: none;
+      border-top: none;
+      border-right: none;
+    }
+    25% {
+      width: 100%;
+      height: 0;
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid hsl(211, 18%, 43%);
+      border-left: 2px solid hsl(211, 18%, 43%);
+      border-top: none;
+      border-right: none;
+    }
+    50% {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid hsl(211, 25%, 50%);
+      border-left: 2px solid hsl(211, 25%, 50%);
+      border-top: 2px solid hsl(211, 25%, 50%);
+      border-right: none;
+    }
+    75% {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-right: none;
+      border-bottom: 2px solid hsl(211, 18%, 43%);
+      border-left: 2px solid hsl(211, 18%, 43%);
+      border-top: 2px solid hsl(211, 18%, 43%);
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      border-right: none;
+      border-bottom: 2px solid hsl(211, 20%, 46%);
+      border-left: 2px solid hsl(211, 20%, 46%);
+      border-top: 2px solid hsl(211, 20%, 46%);
+    }
   }
 }
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-
-  *,
-  ::before,
-  ::after {
+  *, ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
