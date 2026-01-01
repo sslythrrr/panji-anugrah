@@ -100,6 +100,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            aria-label="Download resume PDF"
           >
             <Download className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
             <span>Resume</span>
@@ -154,6 +155,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           style={{ opacity }}
+          aria-label="Scroll down to About section"
         >
           <span className="text-xs tracking-widest uppercase">dive in</span>
           <ChevronDown className="w-5 h-5 scroll-indicator" />

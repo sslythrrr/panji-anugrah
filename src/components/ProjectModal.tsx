@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Github, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
+import StructuredData from "./StructuredData";
 
 interface Project {
   id: number;
@@ -63,6 +64,9 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <>
+          {/* Structured Data for current project */}
+          <StructuredData project={project} type="project" />
+          
           {/* Backdrop */}
           <motion.div
             className="fixed inset-0 z-[60] bg-background/90 backdrop-blur-sm"

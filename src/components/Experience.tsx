@@ -51,7 +51,7 @@ const Experience = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-      <section id="experience" className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" ref={containerRef}>
+      <section id="experience" className="pt-16 pb-20 md:pt-20 md:pb-28 px-6" ref={containerRef}>
         <div className="max-w-5xl mx-auto" ref={ref}>
           <motion.h2
             className="text-section font-display mb-16 md:mb-20"

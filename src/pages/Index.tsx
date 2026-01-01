@@ -14,10 +14,20 @@ import EndCredits from "@/components/EndCredits";
 import CommandPalette from "@/components/CommandPalette";
 import MatrixRain from "@/components/MatrixRain";
 import Chatbot from "@/components/Chatbot";
+import StructuredData from "@/components/StructuredData";
 import { useKonamiCode, useTypedText, useCommandPaletteShortcut } from "@/hooks/useEasterEggs";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Check sessionStorage - only show loading on first visit per session
+    try {
+      const hasVisited = sessionStorage.getItem('hasVisitedThisSession');
+      return !hasVisited; // Show loading only if not visited yet
+    } catch {
+      // Fallback if sessionStorage is unavailable (private mode, etc)
+      return true;
+    }
+  });
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isMatrixActive, setIsMatrixActive] = useState(false);
   const [nameClickCount, setNameClickCount] = useState(0);
@@ -25,9 +35,14 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState("");
   const [hoveredNav, setHoveredNav] = useState<'top' | 'side' | null>(null);
 
-  // Loading screen
-  useEffect(() => {
-    setIsLoading(true);
+  // Mark session as visited when loading finishes
+  const handleLoadingFinish = useCallback(() => {
+    try {
+      sessionStorage.setItem('hasVisitedThisSession', 'true');
+    } catch {
+      // Ignore if sessionStorage is unavailable
+    }
+    setIsLoading(false);
   }, []);
 
   // Track active section for side nav
@@ -82,30 +97,10 @@ const Index = () => {
 
   useKonamiCode(triggerKonami);
   useTypedText("matrix", triggerMatrix);
-  useTypedText("panji", triggerMatrix);
-  useTypedText("PANJI", triggerMatrix);
+  useTypedText("tubagus", triggerMatrix);
+  useTypedText("TUBAGUS", triggerMatrix);
   useTypedText("help", toggleCommandPalette);
   useCommandPaletteShortcut(toggleCommandPalette);
-  // --- DATA SCHEMA JSON-LD ---
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tubagus Panji Anugrah",
-    "alternateName": ["Panji Anugrah", "Tubagus Panji"],
-    "url": "https://panjianugrah.me",
-    "jobTitle": "Computer Science Graduate | Software Engineer | AI/ML | QA Automation",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Universitas Pakuan"
-    },
-    "knowsAbout": ["Mobile Development", "QA Automation", "Data Engineering", "Machine Learning", "Natural Language Processing", "Data Science"],
-    "sameAs": [
-      "https://www.linkedin.com/in/panji-anugrah",
-      "https://github.com/sslythrrr",
-      "https://instagram.com/tubaguspn",
-      "https://facebook.com/panji.anoegrah"
-    ],
-  };
 
   return (
     <>
@@ -117,57 +112,60 @@ const Index = () => {
         />
         <meta name="keywords" content="Tubagus Panji Anugrah, Mobile Developer, QA Engineer, Data Scientist, Portfolio, Bogor, Universitas Pakuan" />
         <link rel="canonical" href="https://panjianugrah.me" />
-
-        {/* Script JSON-LD untuk Knowledge Graph */}
-        <script type="application/ld+json">
-          {JSON.stringify(schemaData)}
-        </script>
       </Helmet>
-      {/* Custom Cursor */}
-      <CustomCursor />
-      {/* Loading Screen */}
+
+      {/* Portfolio Structured Data */}
+      <StructuredData type="portfolio" />
+
+      {/* Loading Screen - Always render first */}
       <LoadingScreen
         isLoading={isLoading}
-        onFinish={() => {
-          setIsLoading(false);
-        }}
+        onFinish={handleLoadingFinish}
       />
-      {/* Matrix Rain Easter Egg */}
-      <MatrixRain isActive={isMatrixActive} />
-      {/* Command Palette */}
-      <CommandPalette
-        isOpen={isCommandPaletteOpen}
-        onClose={() => setIsCommandPaletteOpen(false)}
-      />
-      {/* Header Navigation */}
-      <Navigation
-        onNameClick={handleNameClick}
-        nameClickCount={nameClickCount}
-        onScrollPastHero={handleScrollPastHero}
-        hoveredNav={hoveredNav}
-        onHoverChange={setHoveredNav}
-      />
-      {/* Side Navigation */}
-      <SideNavigation
-        isVisible={isPastHero}
-        activeSection={activeSection}
-        hoveredNav={hoveredNav}
-        onHoverChange={setHoveredNav}
-      />
-      {/* Main Content */}
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
-      {/* End Credits */}
-      <EndCredits />
-      {/* Footer */}
-      <Footer />
-      {/* Chatbot */}
-      <Chatbot />
+      
+      {/* Main Content - Only render after loading */}
+      {!isLoading && (
+        <>
+          {/* Custom Cursor */}
+          <CustomCursor />
+          {/* Matrix Rain Easter Egg */}
+          <MatrixRain isActive={isMatrixActive} />
+          {/* Command Palette */}
+          <CommandPalette
+            isOpen={isCommandPaletteOpen}
+            onClose={() => setIsCommandPaletteOpen(false)}
+          />
+          {/* Header Navigation */}
+          <Navigation
+            onNameClick={handleNameClick}
+            nameClickCount={nameClickCount}
+            onScrollPastHero={handleScrollPastHero}
+            hoveredNav={hoveredNav}
+            onHoverChange={setHoveredNav}
+          />
+          {/* Side Navigation */}
+          <SideNavigation
+            isVisible={isPastHero}
+            activeSection={activeSection}
+            hoveredNav={hoveredNav}
+            onHoverChange={setHoveredNav}
+          />
+          {/* Main Content */}
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Contact />
+          </main>
+          {/* End Credits */}
+          <EndCredits />
+          {/* Footer */}
+          <Footer />
+          {/* Chatbot */}
+          <Chatbot />
+        </>
+      )}
     </>
   );
 };

@@ -25,6 +25,18 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
   const [activeSection, setActiveSection] = useState("");
   const [isHoveredFromBelow, setIsHoveredFromBelow] = useState(false);
 
+  // Disable body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight = window.innerHeight;
@@ -68,7 +80,12 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
     } else {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth"
+        });
       }
     }
   };
@@ -93,7 +110,7 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hoveredNav === 'top' && !isVisible
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hoveredNav === 'top' && !isVisible
           ? 'bg-background/30 backdrop-blur-sm'
           : 'bg-transparent'
           } ${hoveredNav === 'side' && isVisible ? 'pointer-events-none' : ''}`}
@@ -105,32 +122,6 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo/Icon + Name (statis) 
-            <div className="flex items-center">
-              <div className="relative w-8 h-8 md:w-14 md:h-14">
-                <img
-                  src="/icon.png"
-                  alt="Logo Icon"
-                  className="w-full h-full object-contain"
-                  style={{ display: 'block' }}
-                />
-              </div>
-            </div>*/}
-
-            {/* Mobile Menu Button interaktif */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hoverable order-1"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-
-            {/* Desktop Navigation interaktif */}
             <div className="hidden md:flex items-center gap-8 ml-auto">
               {navItems.map((item) => (
                 <button
@@ -141,6 +132,8 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                     }`}
+                  aria-label={`Navigate to ${item.label} section`}
+                  aria-current={(activeSection === item.href.slice(1)) || (item.href === "#hero" && activeSection === "") ? 'page' : undefined}
                 >
                   <span className="link-underline">{item.label}</span>
                 </button>
@@ -161,11 +154,11 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
             transition={{ duration: 0.2 }}
           >
             <div
-              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-background/60 backdrop-blur-md"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
-              className="absolute left-0 top-0 h-full w-64 bg-background border-r border-secondary"
+              className="absolute left-0 top-0 h-screen w-64 bg-background/80 backdrop-blur-xl overflow-y-auto"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
@@ -191,9 +184,39 @@ const Navigation = ({ onNameClick, nameClickCount = 0, onScrollPastHero, hovered
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        )}      </AnimatePresence>
+
+      {/* Always visible burger button on mobile when scrolled */}
+      {!isVisible && (
+        <motion.button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden fixed top-4 right-6 z-50 p-2 rounded-lg hoverable"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </motion.button>
+      )}
+      {/* Burger button at hero section on mobile */}
+      {isVisible && (
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden fixed top-4 right-6 z-50 p-2 hoverable"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
+      )}    </>
   );
 };
 

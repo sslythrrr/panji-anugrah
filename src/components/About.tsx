@@ -18,7 +18,7 @@ const About = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.4, 1, 1, 0.4]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0.3, 1, 1, 1, 0.3]);
 
   useEffect(() => {
     if (profileInView) {
@@ -58,7 +58,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="pt-8 pb-12 md:pt-12 md:pb-18 px-6 md: mt-16" ref={containerRef}>
+    <section id="about" className="pt-16 pb-20 md:pt-20 md:pb-28 px-6 md: mt-16" ref={containerRef}>
       <motion.div
         className="max-w-5xl mx-auto"
         ref={ref}

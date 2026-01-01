@@ -25,7 +25,12 @@ const SideNavigation = ({ isVisible, activeSection, hoveredNav, onHoverChange }:
     } else {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth"
+        });
       }
     }
   };

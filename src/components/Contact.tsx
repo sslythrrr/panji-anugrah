@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Linkedin, Github, Instagram, Mail, ArrowUpRight, Download } from "lucide-react";
+import { Linkedin, Github, Instagram, Mail, ArrowUpRight } from "lucide-react";
 
 const socials = [
   {
@@ -28,39 +28,37 @@ const socials = [
 const Contact = () => {
   const containerRef = useRef(null);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const socialsRef = useRef(null);
-  const socialsInView = useInView(socialsRef, { margin: "-100px" });
-  
+  const isInView = useInView(ref, { once: false, margin: "-50px" });
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.5, 0.8, 1], [0.3, 1, 1, 1, 0.3]);
 
   return (
-    <section id="contact" className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" ref={containerRef}>
+    <section id="contact" className="pt-16 pb-20 md:pt-20 md:pb-28 px-6" ref={containerRef}>
       <motion.div 
         className="max-w-2xl mx-auto text-center"
         ref={ref}
-        style={{ y, scale }}
+        style={{ y, opacity }}
       >
         <motion.h2
           className="text-section font-display mb-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           Let's Connect
         </motion.h2>
 
         <motion.p
           className="text-lg text-muted-foreground mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           Interested in collaborating or just want to say hi? Feel free to reach
           out through any of these platforms.
@@ -82,10 +80,7 @@ const Contact = () => {
           <span>Download Resume</span>
         </motion.a>
 */}
-        <div
-          className="flex flex-col gap-4"
-          ref={socialsRef}
-        >
+        <div className="flex flex-col gap-4">
           {socials.map((social, index) => (
             <motion.a
               key={social.name}
@@ -93,14 +88,14 @@ const Contact = () => {
               target={social.name !== "Email" ? "_blank" : undefined}
               rel={social.name !== "Email" ? "noopener noreferrer" : undefined}
               className="group flex items-center justify-between p-4 md:p-5 border border-secondary rounded-lg hover:border-foreground/30 transition-all duration-300 hoverable magnetic-btn"
-              initial={{ x: -30, y: 10 }}
-              animate={socialsInView ? { x: 0, y: 0 } : {}}
+              initial={{ opacity: 0, x: -40, y: 20 }}
+              animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -40, y: 20 }}
               transition={{ 
                 duration: 0.2, 
-                delay: 0.25 + index * 0.08,
+                delay: 0.2 + index * 0.1,
                 ease: [0.22, 1, 0.36, 1]
               }}
-              whileHover={{ x: 8, scale: 1.01 }}
+              whileHover={{ x: 6, scale: 1.01 }}
             >
               <div className="flex items-center gap-4">
                 <motion.div
@@ -113,7 +108,7 @@ const Contact = () => {
                   {social.name}
                 </span>
               </div>
-              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-all duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </motion.a>
           ))}
         </div>
