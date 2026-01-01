@@ -94,9 +94,6 @@ const About = () => {
                     src={profileInfo.imageUrl}
                     alt="Panji Anugrah"
                     className="w-full h-auto object-cover"
-                    loading="eager"
-                    decoding="sync"
-                    fetchPriority="high"
                   />
                   {/* Subtle glow overlay*/}
                   <motion.div
