@@ -58,7 +58,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="pt-16 pb-20 md:pt-20 md:pb-28 px-6 md: mt-16" ref={containerRef}>
+    <section id="about" className="pt-16 pb-20 md:pt-20 md:pb-28 px-6 md:mt-16" ref={containerRef}>
       <motion.div
         className="max-w-5xl mx-auto"
         ref={ref}
@@ -80,7 +80,7 @@ const About = () => {
           {/* Bio with Profile */}
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 mb-16">
             {/* Profile Photo */}
-            <motion.div
+            <div
               className="flex-shrink-0"
               ref={profileRef}
             >
@@ -94,6 +94,9 @@ const About = () => {
                     src={profileInfo.imageUrl}
                     alt="Panji Anugrah"
                     className="w-full h-auto object-cover"
+                    loading="eager"
+                    decoding="sync"
+                    fetchPriority="high"
                   />
                   {/* Subtle glow overlay*/}
                   <motion.div
@@ -128,7 +131,7 @@ const About = () => {
                   </div>
                 </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
             {/* Bio Text */}
             <div className="flex-1 space-y-6 text-base md:text-[17px] text-foreground/80 leading-relaxed">
               <p>

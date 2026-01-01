@@ -505,7 +505,7 @@ const Projects = () => {
                                 alt=""
                                 className="absolute inset-0 w-full h-full object-cover scale-110 blur-lg opacity-50 pointer-events-none select-none"
                                 aria-hidden="true"
-                                loading={index < 4 ? "eager" : "lazy"}
+
                               />
                               {/* Uniform dark overlay for all */}
                               <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-[#18181b]/100 to-black/90 opacity-100 pointer-events-none select-none" />
@@ -514,7 +514,6 @@ const Projects = () => {
                                 src={project.images[0]}
                                 alt={`${project.title} - ${project.categories.join(', ')} project showcasing ${project.tags.slice(0, 3).join(', ')}`}
                                 className="relative z-10 max-h-[93%] max-w-[88%] object-contain rounded-md shadow-lg"
-                                loading={index < 4 ? "eager" : "lazy"}
                                 decoding="async"
                               />
                             </>
